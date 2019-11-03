@@ -37,6 +37,13 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 * **PUT** `/api/contacts/{:id}`
 * **DELETE** `/api/contacts/{:id}`
 
+## Setup
+To make the frontend app work, download vue and vue-router from a CDN:
+* https://cdnjs.com/libraries/vue
+* https://cdnjs.com/libraries/vue-router
+
+Then, copy these files to the folder `./server/project/api/static/js/`
+
 ## Dependencies
 * [Docker](https://www.docker.com/)
 * [Docker Compose](https://docs.docker.com/compose/)
@@ -84,6 +91,6 @@ docker-compose -f docker-compose-dev.yml exec database psql -U postgres
 * [Random User Generator](https://randomuser.me/)
 
 ## Vue Content Delivery Networks
-* https://cdnjs.com/libraries/vue
-* https://cdnjs.com/libraries/vue-router
+* 
+* 
 * https://cdnjs.com/libraries/vuex
