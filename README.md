@@ -58,7 +58,7 @@ Then, copy these files to the folder `./server/project/api/static/js/`
 
 `docker-compose -f docker-compose-dev.yml up`
 
-The client should be acessible at [http://localhost:80](http://localhost:80).
+The client should be acessible at [http://localhost:5000](http://localhost:5000).
 
 ### Create the database
 
