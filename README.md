@@ -89,8 +89,3 @@ docker-compose -f docker-compose-dev.yml exec database psql -U postgres
 * [Flask](https://palletsprojects.com/p/flask/)
 * [SQLAlchemy](https://www.sqlalchemy.org/)
 * [Random User Generator](https://randomuser.me/)
-
-## Vue Content Delivery Networks
-* 
-* 
-* https://cdnjs.com/libraries/vuex
