@@ -1,0 +1,8 @@
+.jumbotron {
+  background-image: url("../images/Stargazing_by_Marcel_Kächele.jpg");
+  background-size: cover;
+}
+
+.jumbotron h1 {
+  color: white;
+}
