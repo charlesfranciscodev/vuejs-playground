@@ -17,7 +17,7 @@ class Contact(db.Model):
             "first_name": self.first_name,
             "last_name": self.last_name,
             "email": self.email,
-            "birthdate": self.birthdate,
+            "birthdate": self.birthdate.strftime("%Y-%m-%d"),
             "phone_number": self.phone_number,
             "avatar_url": self.avatar_url,
         }

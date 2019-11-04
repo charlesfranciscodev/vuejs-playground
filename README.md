@@ -34,7 +34,7 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 * **GET** `/api/contacts`
 * **GET** `/api/contacts/{:id}`
 * **POST** `/api/contacts`
-* **PUT** `/api/contacts/{:id}`
+* **PUT** `/api/contacts`
 * **DELETE** `/api/contacts/{:id}`
 
 ## Setup
