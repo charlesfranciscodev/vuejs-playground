@@ -8,6 +8,7 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 * View an image gallery of all contacts.
 * Sort contacts by first name or last name.
 * General Search Bar which finds matches for first name, last name or email
+* Each contact can be clicked to show a detailed view of the contact.
 * Each contact can be edited or deleted (with confirmation).
 * The frontend route path is `/`.
 
