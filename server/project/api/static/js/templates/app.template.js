@@ -1,8 +1,8 @@
 const AppTemplate = `
   <div>
     <jumbotron></jumbotron>
-    <p>{{ message }}</p>
+    <contact-gallery></contact-gallery>
   </div>
 `;
 
-export { AppTemplate }
+export default AppTemplate;

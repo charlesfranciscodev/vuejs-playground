@@ -6,4 +6,4 @@ const JumbotronTemplate = `
   </div>
 `;
 
-export { JumbotronTemplate }
+export default JumbotronTemplate;
