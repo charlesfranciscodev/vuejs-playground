@@ -23,7 +23,7 @@ const ConctactGallery = {
       } else {
         return Promise.reject(new Error(response.statusText));
       }
-    }).then(response =>response.json())
+    }).then(response => response.json())
     .then(data => this.contacts = data)
     .catch(error => console.log(error));
   }

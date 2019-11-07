@@ -7,7 +7,10 @@ const ConctactCard = {
 
   computed: {
     fullName: function() {
-      return `${this.contact.first_name} ${this.contact.last_name}`;
+      return `${this.contact["first_name"]} ${this.contact["last_name"]}`;
+    },
+    detailViewPath: function() {
+      return `/#/view/${this.contact["contact_id"]}`;
     }
   }
 };

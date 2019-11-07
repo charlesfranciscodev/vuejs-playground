@@ -31,6 +31,7 @@ def seed_db():
             contact.birthdate = dateutil.parser.parse(contact_dict["birthdate"])
             contact.phone_number = contact_dict["phoneNumber"]
             contact.avatar_url = contact_dict["avatarUrl"]
+            contact.description = contact_dict["description"]
             db.session.add(contact)
     db.session.commit()
 

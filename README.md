@@ -6,30 +6,36 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 
 ### Home Route
 * View an image gallery of all contacts.
-* Sort contacts by first name or last name.
-* General Search Bar which finds matches for first name, last name or email
-* Each contact can be clicked to show a detailed view of the contact.
-* Each contact can be edited or deleted (with confirmation).
-* The frontend route path is `/`.
+* The frontend route path is `/` (link in the navbar).
 
 ### View Contact Route
-* View the contact's full information.
-  * First Name (text)
-  * Last Name (text)
-  * Email Address (text)
-  * Birthdate (date and time)
-  * Phone Number (text)
-  * Avatar URL (text)
-* The contact can be edited or deleted (with confirmation).
+* Each contact can be clicked to show a detailed view of the contact.
+* Shows the contact's information.
+  * Full Name
+  * Age
+  * Email Address
+  * Phone Number
+  * Description
+  * Avatar
 * The frontend route path is `/view/{:id}`.
 
+### Navigation Bar
+
 ### Edit Contact Route
+* Each contact can be edited from the home page or the detail view.
 * Edit the contact's full information.
 * The frontend route path is `/edit/{:id}`.
 
+### Delete Contact
+* Each contact can be deleted (with confirmation) from the home page or the detail view.
+
 ### Create New Contact Route
 * Create a new contact.
-* The frontend route path is `/create`.
+* The frontend route path is `/create` (link in the navbar).
+
+### Other
+* Sort contacts on the home page by first name or last name.
+* General Search Bar on the home page which finds matches for first name, last name or email.
 
 ## API Routes
 * **GET** `/api/contacts`
