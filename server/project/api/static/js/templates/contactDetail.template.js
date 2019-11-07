@@ -1,8 +1,8 @@
 const ContactDetailTemplate = `
 <div class="container">
-  <div class="row">
-    <div class="col-8">
-      <div class="text-center">
+  <div class="row mb-4">
+    <div class="col-sm-12 col-lg-6 d-flex align-items-center justify-content-center">
+      <div>
         <h2>{{ fullName }}</h2>
         <p class="font-weight-bold">{{ age }} years old</p>
         <p class="font-italic">
@@ -14,14 +14,16 @@ const ContactDetailTemplate = `
           {{ contact.phone_number }}
         </p>
       </div>
-
-      <h3>Description</h3>
-      <p>{{ contact.description }}</p>
     </div>
 
-    <div class="col-4">
+    <div class="col-sm-12 col-lg-6 d-flex align-items-center justify-content-center">
       <img :src="contact.avatar_url" class="img-thumbnail" :alt="fullName">
     </div>
+  </div>
+
+  <div class="row mx-2">
+    <h3>Description</h3>
+    <p>{{ contact.description }}</p>
   </div>
 </div>
 `;
