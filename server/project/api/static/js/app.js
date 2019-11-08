@@ -2,6 +2,8 @@ import Vue from "./vue.esm.browser.js";
 import VueRouter from "./vue-router.esm.browser.js";
 import AppTemplate from "./templates/app.template.js";
 import Jumbotron from "./components/jumbotron.component.js";
+import Navbar from "./components/navbar.component.js";
+import About from "./components/about.component.js";
 import ContactGallery from "./components/contactGallery.component.js";
 import ContactDetail from "./components/contactDetail.component.js";
 
@@ -12,6 +14,10 @@ const router = new VueRouter({
     {
       path: "/",
       component: ContactGallery
+    },
+    {
+      path: "/about",
+      component: About
     },
     {
       path: "/view/:id",
@@ -25,7 +31,7 @@ new Vue({
 
   components: {
     "jumbotron": Jumbotron,
-    "contact-gallery": ContactGallery
+    "navbar": Navbar
   },
 
   router,
