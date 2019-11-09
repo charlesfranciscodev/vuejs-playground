@@ -22,10 +22,11 @@ const ContactDetailTemplate = `
   </div>
 
   <div class="row mx-2">
-    <h3>Description</h3>
-    <p>{{ contact.description }}</p>
+    <div>
+      <h3>Description</h3>
+      <p>{{ contact.description }}</p>
+    </div>
   </div>
-</div>
 `;
 
 export { ContactDetailTemplate }

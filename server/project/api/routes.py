@@ -47,7 +47,7 @@ def create_or_update_contact():
     if request.method == "PUT":
         keys.append("contactId")
     for key in keys:
-        if not request_json.get(key):
+        if key not in request_json:
             response["message"] = "Missing {key} in request body".format(key=key)
             return jsonify(response), 400
 

@@ -6,7 +6,7 @@ const ContactFormMixin = {
   data: function() {
     return {
       contact: {
-        "contactId": this.$route.params.id,
+        "contactId": null,
         "firstName": "",
         "lastName": "",
         "email": "",
