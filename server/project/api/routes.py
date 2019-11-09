@@ -43,26 +43,25 @@ def create_or_update_contact():
     contact = None
 
     # Validation
-    keys = ["firstName", "lastName", "email", "birthdate", "phoneNumber", "avatarUrl"]
+    keys = ["firstName", "lastName", "email", "birthdate", "phoneNumber", "avatarUrl", "description"]
     if request.method == "PUT":
-        keys.append("contact_id")
+        keys.append("contactId")
     for key in keys:
         if not request_json.get(key):
             response["message"] = "Missing {key} in request body".format(key=key)
             return jsonify(response), 400
 
     email = request_json["email"]
-    if request.method == "POST":
-        contact = Contact.query.filter_by(email=email).first()
-        if contact is not None:
-            response["message"] = "Email already exists"
-            return jsonify(response), 409
+    contact_id = int(request_json["contactId"]) if request.method == "PUT" else None
+    contact = Contact.query.filter_by(email=email).first()
+    if contact is not None and (request.method == "POST" or contact.contact_id != contact_id):
+        response["message"] = "Email already exists"
+        return jsonify(response), 409
 
     # Parse the request data
     if request.method == "POST":
         contact = Contact()
     elif request.method == "PUT":
-        contact_id = int(request_json["contact_id"])
         contact = Contact.query.filter_by(contact_id=contact_id).first()
         if contact is None:
             response["message"] = "Contact not found"
@@ -74,6 +73,7 @@ def create_or_update_contact():
     contact.birthdate = dateutil.parser.parse(request_json["birthdate"])
     contact.phone_number = request_json["phoneNumber"]
     contact.avatar_url = request_json["avatarUrl"]
+    contact.description = request_json["description"]
 
     if request.method == "POST":
         db.session.add(contact)
@@ -81,6 +81,7 @@ def create_or_update_contact():
     elif request.method == "PUT":
         response["message"] = "Contact updated successfully"
     db.session.commit()
+    response["contact_id"] = contact.contact_id
     
     return jsonify(response), 201
 

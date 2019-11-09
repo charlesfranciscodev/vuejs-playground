@@ -1,10 +1,14 @@
 import Vue from "./vue.esm.browser.js";
 import VueRouter from "./vue-router.esm.browser.js";
+
 import AppTemplate from "./templates/app.template.js";
+
 import Jumbotron from "./components/jumbotron.component.js";
 import Navbar from "./components/navbar.component.js";
-import About from "./components/about.component.js";
+
 import ContactGallery from "./components/contactGallery.component.js";
+import CreateContact from "./components/createContact.component.js";
+import About from "./components/about.component.js";
 import ContactDetail from "./components/contactDetail.component.js";
 
 Vue.use(VueRouter);
@@ -14,6 +18,15 @@ const router = new VueRouter({
     {
       path: "/",
       component: ContactGallery
+    },
+    {
+      path: "/create",
+      component: CreateContact,
+      props: {
+        "heading": "Create New Contact",
+        "buttonText": "Create",
+        "httpMethod": "POST"
+      }
     },
     {
       path: "/about",

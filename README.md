@@ -21,17 +21,17 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 
 ### Navigation Bar
 
-### Edit Contact Route
-* Each contact can be edited from the home page or the detail view.
-* Edit the contact's full information.
-* The frontend route path is `/edit/{:id}`.
-
-### Delete Contact
-* Each contact can be deleted (with confirmation) from the home page or the detail view.
-
 ### Create New Contact Route
 * Create a new contact.
 * The frontend route path is `/create` (link in the navbar).
+
+### Edit Contact Route
+* Each contact can be edited from the home page or the detail view.
+* Edit the contact's full information.
+* The frontend route path is `/edit/`.
+
+### Delete Contact
+* Each contact can be deleted (with confirmation) from the home page or the detail view.
 
 ### Other
 * Sort contacts on the home page by first name or last name.
