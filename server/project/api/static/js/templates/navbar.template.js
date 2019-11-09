@@ -13,6 +13,9 @@ const NavbarTemplate = `
       <li class="nav-item">
         <a class="nav-link" href="/#/about">About</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/charlesfranciscodev/contact-list" target="_blank">GitHub</a>
+      </li>
     </ul>
   </div>
 </nav>
