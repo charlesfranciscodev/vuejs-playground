@@ -16,7 +16,7 @@ const ContactDetailTemplate = `
 
         <div>
           <a :href="editViewPath" class="btn btn-block btn-outline-info my-3">
-          <i class="fas fa-user-edit"></i> Edit
+            <i class="fas fa-user-edit"></i> Edit
           </a>
         </div>
 
