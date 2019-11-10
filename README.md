@@ -37,7 +37,8 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 ### Authentication
 * [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) for password hashing in the backend.
 * [JSON Web Tokens](https://jwt.io/) for storing the credentials in the frontend.
-* Login with username
+* Login with username and password
+* Logout
 
 ### Other
 * Sort contacts on the home page by first name or last name.
