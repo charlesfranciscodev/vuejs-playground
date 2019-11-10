@@ -13,11 +13,23 @@ const ContactDetailTemplate = `
           <i class="fas fa-phone"></i> 
           {{ contact.phone_number }}
         </p>
+
+        <div>
+          <a :href="editViewPath" class="btn btn-block btn-outline-info my-3">
+          <i class="fas fa-user-edit"></i> Edit
+          </a>
+        </div>
+
+        <div>
+          <a href="#" class="btn btn-block btn-outline-danger my-3">
+            <i class="fas fa-trash"></i> Delete
+          </a>
+        </div>
       </div>
     </div>
 
     <div class="col-sm-12 col-lg-6 d-flex align-items-center justify-content-center">
-      <img :src="contact.avatar_url" class="img-thumbnail" :alt="fullName">
+      <img :src="contact.avatar_url" class="img-thumbnail avatar" :alt="fullName">
     </div>
   </div>
 
@@ -27,6 +39,7 @@ const ContactDetailTemplate = `
       <p>{{ contact.description }}</p>
     </div>
   </div>
+</div>
 `;
 
 export { ContactDetailTemplate }

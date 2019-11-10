@@ -8,16 +8,16 @@ const ContactFormTemplate = `
   <h2 class="mb-4">{{ heading }}</h2>
 
   <div class="form-group row">
-    <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
+    <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
     <div class="col-sm-10">
-      <input v-model="contact.firstName" type="text" class="form-control" id="firstName" placeholder="First Name">
+      <input v-model="contact.first_name" type="text" class="form-control" id="first_name" placeholder="First Name">
     </div>
   </div>
 
   <div class="form-group row">
-    <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
+    <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
     <div class="col-sm-10">
-      <input v-model="contact.lastName" type="text" class="form-control" id="lastName" placeholder="Last Name">
+      <input v-model="contact.last_name" type="text" class="form-control" id="last_name" placeholder="Last Name">
     </div>
   </div>
 
@@ -36,16 +36,16 @@ const ContactFormTemplate = `
   </div>
 
   <div class="form-group row">
-    <label for="phoneNumber" class="col-sm-2 col-form-label">Phone Number</label>
+    <label for="phone_number" class="col-sm-2 col-form-label">Phone Number</label>
     <div class="col-sm-10">
-      <input v-model="contact.phoneNumber" type="tel" class="form-control" id="phoneNumber" placeholder="Phone Number">
+      <input v-model="contact.phone_number" type="tel" class="form-control" id="phone_number" placeholder="Phone Number">
     </div>
   </div>
 
   <div class="form-group row">
-    <label for="avatarUrl" class="col-sm-2 col-form-label">Avatar URL</label>
+    <label for="avatar_url" class="col-sm-2 col-form-label">Avatar URL</label>
     <div class="col-sm-10">
-      <input v-model="contact.avatarUrl" type="text" class="form-control" id="avatarUrl" placeholder="Avatar URL">
+      <input v-model="contact.avatar_url" type="text" class="form-control" id="avatar_url" placeholder="Avatar URL">
     </div>
   </div>
 

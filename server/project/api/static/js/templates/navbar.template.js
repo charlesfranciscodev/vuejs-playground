@@ -8,16 +8,24 @@ const NavbarTemplate = `
   <div v-bind:class="classObject" class="navbar-collapse" id="navbarLinks">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/#/">Home</a>
+        <a class="nav-link" href="/#/">
+          <i class="fas fa-home"></i> Home
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/#/create">Create</a>
+        <a class="nav-link" href="/#/create">
+          <i class="fas fa-user-plus"></i> Create
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/#/about">About</a>
+        <a class="nav-link" href="/#/about">
+          <i class="fab fa-bootstrap"></i> About
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="https://github.com/charlesfranciscodev/contact-list" target="_blank">GitHub</a>
+        <a class="nav-link" href="https://github.com/charlesfranciscodev/contact-list" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a>
       </li>
     </ul>
   </div>

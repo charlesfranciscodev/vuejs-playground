@@ -19,14 +19,18 @@ const AboutTemplate = `
         Tbh af brooklyn, succulents fam cray vaporware disrupt lo-fi synth jianbing street art selvage. Master cleanse coloring book viral, fingerstache farm-to-table activated charcoal deep v sriracha DIY artisan forage williamsburg leggings raclette flannel. Flannel kitsch heirloom cliche swag, pitchfork put a bird on it flexitarian lyft 8-bit neutra. Photo booth chia authentic, cardigan enamel pin chicharrones iPhone kogi ennui. Godard humblebrag four loko swag.
       </p>
 
-      <p>
-        Trust fund literally chartreuse tofu cloud bread succulents banh mi. Meh vice marfa, hoodie iPhone migas lomo chicharrones mustache intelligentsia quinoa. Lo-fi listicle hashtag marfa single-origin coffee. Tbh small batch helvetica chartreuse, pug man bun messenger bag keytar yr iceland taxidermy portland live-edge. Mlkshk prism air plant typewriter. Heirloom pabst lyft hella, church-key chia sriracha kitsch readymade VHS.
-      </p>
+      <div class="card text-center mb-4">
+        <div class="card-header">
+          Quote
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+          </blockquote>
+        </div>
+      </div>
 
-      <blockquote class="blockquote text-center">
-        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-      </blockquote>
     </div>
   </div>
 `;

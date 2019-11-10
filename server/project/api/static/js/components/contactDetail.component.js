@@ -1,6 +1,10 @@
+import ContactInfoMixin from "../mixins/contactInfo.mixin.js";
+import FetchContactMixin from "../mixins/fetchContact.mixin.js";
 import { ContactDetailTemplate } from "../templates/contactDetail.template.js";
 
 const ContactDetail = {
+  mixins: [ContactInfoMixin, FetchContactMixin],
+
   data: function() {
     return {
       contact: {}
@@ -10,9 +14,6 @@ const ContactDetail = {
   template: ContactDetailTemplate,
 
   computed: {
-    fullName: function() {
-      return `${this.contact["first_name"]} ${this.contact["last_name"]}`;
-    },
     age: function() {
       let birthdate = new Date(this.contact["birthdate"]);
       let localDate = new Date();
@@ -23,20 +24,6 @@ const ContactDetail = {
       return ageInYears;
     }
   },
-
-  created() {
-    const url = `/api/contacts/${this.$route.params.id}`;
-    fetch(url)
-    .then(function(response) {
-      if (response.status >= 200 && response.status < 300) {
-        return Promise.resolve(response);
-      } else {
-        return Promise.reject(new Error(response.statusText));
-      }
-    }).then(response => response.json())
-    .then(data => this.contact = data)
-    .catch(error => console.log(error));
-  }
 };
 
 export default ContactDetail;

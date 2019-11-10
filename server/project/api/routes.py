@@ -43,16 +43,16 @@ def create_or_update_contact():
     contact = None
 
     # Validation
-    keys = ["firstName", "lastName", "email", "birthdate", "phoneNumber", "avatarUrl", "description"]
+    keys = ["first_name", "last_name", "email", "birthdate", "phone_number", "avatar_url", "description"]
     if request.method == "PUT":
-        keys.append("contactId")
+        keys.append("contact_id")
     for key in keys:
         if key not in request_json:
             response["message"] = "Missing {key} in request body".format(key=key)
             return jsonify(response), 400
 
     email = request_json["email"]
-    contact_id = int(request_json["contactId"]) if request.method == "PUT" else None
+    contact_id = int(request_json["contact_id"]) if request.method == "PUT" else None
     contact = Contact.query.filter_by(email=email).first()
     if contact is not None and (request.method == "POST" or contact.contact_id != contact_id):
         response["message"] = "Email already exists"
@@ -67,12 +67,12 @@ def create_or_update_contact():
             response["message"] = "Contact not found"
             return jsonify(response), 404
 
-    contact.first_name = request_json["firstName"]
-    contact.last_name = request_json["lastName"]
+    contact.first_name = request_json["first_name"]
+    contact.last_name = request_json["last_name"]
     contact.email = email
     contact.birthdate = dateutil.parser.parse(request_json["birthdate"])
-    contact.phone_number = request_json["phoneNumber"]
-    contact.avatar_url = request_json["avatarUrl"]
+    contact.phone_number = request_json["phone_number"]
+    contact.avatar_url = request_json["avatar_url"]
     contact.description = request_json["description"]
 
     if request.method == "POST":

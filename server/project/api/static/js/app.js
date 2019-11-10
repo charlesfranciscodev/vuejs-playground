@@ -8,6 +8,7 @@ import Navbar from "./components/navbar.component.js";
 
 import ContactGallery from "./components/contactGallery.component.js";
 import CreateContact from "./components/createContact.component.js";
+import UpdateContact from "./components/updateContact.component.js";
 import About from "./components/about.component.js";
 import ContactDetail from "./components/contactDetail.component.js";
 
@@ -26,6 +27,15 @@ const router = new VueRouter({
         "heading": "Create New Contact",
         "buttonText": "Create",
         "httpMethod": "POST"
+      }
+    },
+    {
+      path: "/edit/:id",
+      component: UpdateContact,
+      props: {
+        "heading": "Edit Contact",
+        "buttonText": "Save",
+        "httpMethod": "PUT"
       }
     },
     {

@@ -1,14 +1,14 @@
+import ContactInfoMixin from "../mixins/contactInfo.mixin.js";
 import { ContactCardTemplate } from "../templates/contactCard.template.js";
 
 const ConctactCard = {
+  mixins: [ContactInfoMixin],
+
   props: ["contact"],
 
   template: ContactCardTemplate,
-
+  
   computed: {
-    fullName: function() {
-      return `${this.contact["first_name"]} ${this.contact["last_name"]}`;
-    },
     detailViewPath: function() {
       return `/#/view/${this.contact["contact_id"]}`;
     }

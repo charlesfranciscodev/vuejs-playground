@@ -6,13 +6,13 @@ const ContactFormMixin = {
   data: function() {
     return {
       contact: {
-        "contactId": null,
-        "firstName": "",
-        "lastName": "",
+        "contact_id": this.$route.params.id,
+        "first_name": "",
+        "last_name": "",
         "email": "",
         "birthdate": "",
-        "phoneNumber": "",
-        "avatarUrl": "",
+        "phone_number": "",
+        "avatar_url": "",
         "description": ""
       },
       errors: []
@@ -31,12 +31,12 @@ const ContactFormMixin = {
       let valid = true;
       this.errors = [];
 
-      if (this.contact.firstName === "") {
+      if (this.contact.first_name === "") {
         this.errors.push("First Name required.");
         valid = false;
       }
 
-      if (this.contact.lastName === "") {
+      if (this.contact.last_name === "") {
         this.errors.push("Last Name required.");
         valid = false;
       }
@@ -51,12 +51,12 @@ const ContactFormMixin = {
         valid = false;
       }
 
-      if (this.contact.phoneNumber === "") {
+      if (this.contact.phone_number === "") {
         this.errors.push("Phone Number required.");
         valid = false;
       }
 
-      if (this.contact.avatarUrl === "") {
+      if (this.contact.avatar_url === "") {
         this.errors.push("Avatar URL required.");
         valid = false;
       }
