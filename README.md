@@ -50,6 +50,7 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 * **POST** `/api/contacts`
 * **PUT** `/api/contacts`
 * **DELETE** `/api/contacts/{:id}`
+* **POST** `/login`
 
 ## Setup
 To make the frontend app work, download vue and vue-router from a CDN:
