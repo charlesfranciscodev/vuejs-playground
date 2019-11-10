@@ -4,11 +4,11 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 
 ## Features
 
-### Home Route
+### Home Page
 * View an image gallery of all contacts.
 * The frontend route path is `/` (link in the navbar).
 
-### View Contact Route
+### View Contact Page
 * Each contact can be clicked to show a detailed view of the contact.
 * Shows the contact's information.
   * Full Name
@@ -23,11 +23,11 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 
 ### Navigation Bar
 
-### Create New Contact Route
+### Create New Contact Page
 * Create a new contact.
 * The frontend route path is `/create` (link in the navbar).
 
-### Edit Contact Route
+### Edit Contact Page
 * Each contact can be edited from the home page or the detail view.
 * Edit the contact's full information.
 * The frontend route path is `/edit/{:id}`.
@@ -35,12 +35,12 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 ### Delete Contact
 * Each contact can be deleted from the home page or the detail view.
 
-### View Projects Route
+### View Projects Page
 * requires authentication (should be hidden in the frontend and protected in the backend)
 * View an image gallery of all projects the current user is in.
 * The frontend route path is `/projects` (link in the navbar).
 
-### View Project Route
+### View Project Page
 * Each project can be clicked to show a detailed view of the project.
 * Shows the project's information.
   * Name
