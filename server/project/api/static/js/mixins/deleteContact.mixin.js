@@ -2,11 +2,11 @@ const DeleteContactMixin = {
   methods: {
     deleteContact: function(contactId) {
       let that = this;
-
       const url = `/api/contacts/${contactId}`;
       const options = {
         method: "DELETE"
-      }
+      };
+      
       fetch(url, options)
       .then(function(response) {
         if (response.ok) {
