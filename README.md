@@ -41,6 +41,7 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 * The frontend route path is `/projects` (link in the navbar).
 
 ### View Project Page
+* requires authentication
 * Each project can be clicked to show a detailed view of the project.
 * Shows the project's information.
   * Name
