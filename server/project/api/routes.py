@@ -28,12 +28,17 @@ def contacts():
     return jsonify(response)
 
 
-@blueprint.route("/api/contacts/<int:contact_id>")
+@blueprint.route("/api/contacts/<int:contact_id>", methods=["GET", "DELETE"])
 def contact(contact_id):
     contact = Contact.query.filter_by(contact_id=contact_id).first()
     if contact is None:
         return Response(status=404)
-    return jsonify(contact.to_dict())
+    if request.method == "GET":
+        return jsonify(contact.to_dict())
+    elif request.method == "DELETE":
+        db.session.delete(contact)
+        db.session.commit()
+        return Response(status=204)
 
 
 @blueprint.route("/api/contacts", methods=["POST", "PUT"])
@@ -84,16 +89,6 @@ def create_or_update_contact():
     response["contact_id"] = contact.contact_id
     
     return jsonify(response), 201
-
-
-@blueprint.route("/api/contacts/<int:contact_id>", methods=["DELETE"])
-def delete_contact(contact_id):
-    contact = Contact.query.filter_by(contact_id=contact_id).first()
-    if contact is None:
-        return Response(status=404)
-    db.session.delete(contact)
-    db.session.commit()
-    return Response(status=204)
 
 
 @blueprint.route("/api/test")

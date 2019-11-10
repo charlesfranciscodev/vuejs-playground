@@ -9,9 +9,9 @@ const ContactCardTemplate = `
       <a :href="editViewPath" class="btn btn-info mb-2 mx-2">
         <i class="fas fa-user-edit"></i> Edit
       </a>
-      <a href="#" class="btn btn-danger mb-2 mx-2">
+      <button v-on:click="deleteContact(contact.contact_id)" class="btn btn-danger mb-2 mx-2">
         <i class="fas fa-trash"></i> Delete
-      </a>
+      </button>
     </div>
   </div>
 </div>

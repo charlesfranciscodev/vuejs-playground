@@ -1,9 +1,11 @@
 import ContactInfoMixin from "../mixins/contactInfo.mixin.js";
-import FetchContactMixin from "../mixins/fetchContact.mixin.js";
+import GetContactMixin from "../mixins/getContact.mixin.js";
+import DeleteContactMixin from "../mixins/deleteContact.mixin.js";
+
 import { ContactDetailTemplate } from "../templates/contactDetail.template.js";
 
 const ContactDetail = {
-  mixins: [ContactInfoMixin, FetchContactMixin],
+  mixins: [ContactInfoMixin, GetContactMixin, DeleteContactMixin],
 
   data: function() {
     return {

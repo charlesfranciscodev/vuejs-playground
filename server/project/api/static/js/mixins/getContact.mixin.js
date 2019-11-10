@@ -1,9 +1,9 @@
-const FetchContactMixin = {
+const GetContactMixin = {
   created() {
     const url = `/api/contacts/${this.$route.params.id}`;
     fetch(url)
     .then(function(response) {
-      if (response.status >= 200 && response.status < 300) {
+      if (response.ok) {
         return Promise.resolve(response);
       } else {
         return Promise.reject(new Error(response.statusText));
@@ -14,4 +14,4 @@ const FetchContactMixin = {
   }
 };
 
-export default FetchContactMixin;
+export default GetContactMixin;

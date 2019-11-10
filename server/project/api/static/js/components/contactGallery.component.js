@@ -1,7 +1,7 @@
 import { ContactGalleryTemplate } from "../templates/contactGallery.template.js";
 import ContactCard from "./contactCard.component.js";
 
-const ConctactGallery = {
+const ContactGallery = {
   data: function() {
     return {
       contacts: []
@@ -14,11 +14,17 @@ const ConctactGallery = {
     "contact-card": ContactCard
   },
 
+  methods: {
+    delContact: function(contactId) {
+      this.contacts = this.contacts.filter(contact => contact.contact_id !== contactId);
+    }
+  },
+
   created() {
     const url = "/api/contacts";
     fetch(url)
     .then(function(response) {
-      if (response.status >= 200 && response.status < 300) {
+      if (response.ok) {
         return Promise.resolve(response);
       } else {
         return Promise.reject(new Error(response.statusText));
@@ -29,4 +35,4 @@ const ConctactGallery = {
   }
 };
 
-export default ConctactGallery;
+export default ContactGallery;

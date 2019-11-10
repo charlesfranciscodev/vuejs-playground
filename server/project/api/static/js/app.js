@@ -18,7 +18,8 @@ const router = new VueRouter({
   routes: [
     {
       path: "/",
-      component: ContactGallery
+      component: ContactGallery,
+      name: "home"
     },
     {
       path: "/create",
@@ -27,7 +28,8 @@ const router = new VueRouter({
         "heading": "Create New Contact",
         "buttonText": "Create",
         "httpMethod": "POST"
-      }
+      },
+      name: "create"
     },
     {
       path: "/edit/:id",
@@ -36,15 +38,18 @@ const router = new VueRouter({
         "heading": "Edit Contact",
         "buttonText": "Save",
         "httpMethod": "PUT"
-      }
+      },
+      name: "edit"
     },
     {
       path: "/about",
-      component: About
+      component: About,
+      name: "about"
     },
     {
       path: "/view/:id",
-      component: ContactDetail
+      component: ContactDetail,
+      name: "view"
     }
   ]
 });

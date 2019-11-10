@@ -87,7 +87,7 @@ const ContactFormMixin = {
       }
       fetch(url, options)
       .then(function(response) {
-        if (response.status >= 200 && response.status < 300) {
+        if (response.ok) {
           return Promise.resolve(response);
         } else {
           return response.json().then(function(responseJson) {
