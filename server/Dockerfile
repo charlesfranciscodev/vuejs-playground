@@ -5,7 +5,8 @@ FROM python:3.7-alpine
 RUN apk update && \
     apk add --virtual build-deps gcc python-dev musl-dev && \
     apk add postgresql-dev && \
-    apk add netcat-openbsd
+    apk add netcat-openbsd && \
+    build-essential libffi-dev
 
 # set working directory
 RUN mkdir -p /usr/src/app

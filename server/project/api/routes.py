@@ -5,7 +5,7 @@ from flask import Blueprint, jsonify, request, render_template, Response
 from project.api.models import Contact
 from project import db
 
-blueprint = Blueprint(
+contacts_blueprint = Blueprint(
     "contacts",
     __name__,
     template_folder="./templates",

@@ -12,6 +12,7 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 * Each contact can be clicked to show a detailed view of the contact.
 * Shows the contact's information.
   * Full Name
+  * Username
   * Age
   * Email Address
   * Phone Number
@@ -32,6 +33,11 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 
 ### Delete Contact
 * Each contact can be deleted from the home page or the detail view.
+
+### Authentication
+* [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) for password hashing in the backend.
+* [JSON Web Tokens](https://jwt.io/) for storing the credentials in the frontend.
+* Login with username
 
 ### Other
 * Sort contacts on the home page by first name or last name.
