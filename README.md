@@ -18,6 +18,7 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
   * Phone Number
   * Description
   * Avatar
+  * **Project(s)**
 * The frontend route path is `/view/{:id}`.
 
 ### Navigation Bar
@@ -34,6 +35,24 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 ### Delete Contact
 * Each contact can be deleted from the home page or the detail view.
 
+### View Projects Route
+* requires authentication (should be hidden in the frontend and protected in the backend)
+* View an image gallery of all projects the current user is in.
+* The frontend route path is `/projects` (link in the navbar).
+
+### View Project Route
+* Each project can be clicked to show a detailed view of the project.
+* Shows the project's information.
+  * Name
+  * **Platform(s)**
+    * Name
+    * Icon
+  * Release Date
+  * Website
+  * Description
+  * Logo
+* The frontend route path is `/project/{:id}`.
+
 ### Authentication
 * [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) for password hashing in the backend.
 * [JSON Web Tokens](https://jwt.io/) for storing the credentials in the frontend.
@@ -42,14 +61,22 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 
 ### Other
 * Sort contacts on the home page by first name or last name.
-* General Search Bar on the home page which finds matches for first name, last name or email.
+* General Search Bar on the home page which finds matches for first name, last name or username.
 
 ## API Routes
+
+### Contacts
 * **GET** `/api/contacts`
 * **GET** `/api/contacts/{:id}`
 * **POST** `/api/contacts`
 * **PUT** `/api/contacts`
 * **DELETE** `/api/contacts/{:id}`
+
+### Projects
+* **GET** `/api/projects/`
+* **GET** `/api/projects/{:id}`
+
+### Authentication
 * **POST** `/login`
 
 ## Setup
