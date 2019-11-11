@@ -53,11 +53,14 @@ class Contact(db.Model):
     avatar_url = db.Column(db.Text, nullable=False)
     description = db.Column(db.Text, nullable=False)
     projects = db.relationship(
-        "Project", secondary=contact_project, lazy="subquery",
+        "Project",
+        secondary=contact_project,
+        lazy="subquery",
         backref=db.backref("contacts", lazy=True)
     )
 
-    def hash_password(self, password):
+    @staticmethod
+    def hash_password(password):
         salt = bcrypt.gensalt()
         return bcrypt.hashpw(password.encode("utf-8"), salt).decode()
 
@@ -95,7 +98,9 @@ class Project(db.Model):
     logo_url = db.Column(db.Text, nullable=False)
     description = db.Column(db.Text, nullable=False)
     platforms = db.relationship(
-        "Platform", secondary=project_platform, lazy="subquery",
+        "Platform",
+        secondary=project_platform,
+        lazy="subquery",
         backref=db.backref("projects", lazy=True)
     )
 

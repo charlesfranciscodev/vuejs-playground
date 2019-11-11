@@ -2,7 +2,7 @@ import dateutil.parser
 
 from flask import Blueprint, jsonify, request, render_template, Response
 
-from project.api.models import Contact
+from project.api.models import Contact, Project
 from project import db
 
 contacts_blueprint = Blueprint(
@@ -48,19 +48,28 @@ def create_or_update_contact():
     contact = None
 
     # Validation
-    keys = ["first_name", "last_name", "email", "birthdate", "phone_number", "avatar_url", "description"]
-    if request.method == "PUT":
+    keys = ["first_name", "last_name", "username", "email", "birthdate", "phone_number", "avatar_url", "description"]
+    if request.method == "POST":
+        keys.append("password")
+    elif request.method == "PUT":
         keys.append("contact_id")
     for key in keys:
         if key not in request_json:
             response["message"] = "Missing {key} in request body".format(key=key)
             return jsonify(response), 400
 
-    email = request_json["email"]
     contact_id = int(request_json["contact_id"]) if request.method == "PUT" else None
+
+    email = request_json["email"]
     contact = Contact.query.filter_by(email=email).first()
     if contact is not None and (request.method == "POST" or contact.contact_id != contact_id):
         response["message"] = "Email already exists"
+        return jsonify(response), 409
+
+    username = request_json["username"]
+    contact = Contact.query.filter_by(username=username).first()
+    if contact is not None and (request.method == "POST" or contact.contact_id != contact_id):
+        response["message"] = "Username already exists"
         return jsonify(response), 409
 
     # Parse the request data
@@ -74,11 +83,20 @@ def create_or_update_contact():
 
     contact.first_name = request_json["first_name"]
     contact.last_name = request_json["last_name"]
+    contact.username = request_json["username"]
     contact.email = email
     contact.birthdate = dateutil.parser.parse(request_json["birthdate"])
     contact.phone_number = request_json["phone_number"]
     contact.avatar_url = request_json["avatar_url"]
     contact.description = request_json["description"]
+    if "password" in request_json:
+        contact.hashed_password = contact.hash_password(request_json["password"])
+    if "projects" in request_json:
+        if request.method == "PUT":
+            contact.projects = []
+        for project_id in request_json["projects"]:
+            project = Project.query.filter_by(project_id=project_id).first()
+            contact.projects.append(project)
 
     if request.method == "POST":
         db.session.add(contact)

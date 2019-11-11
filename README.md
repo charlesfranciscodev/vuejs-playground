@@ -59,6 +59,7 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 
 ### Bonus
 * Show a confirmation before deleting a contact.
+* Display a warning message when a user is not assigned to any projects.
 * Sort contacts on the home page by first name or last name.
 * General Search Bar on the home page which finds matches for first name, last name or username.
 * Allow the user to login with his email as well.
