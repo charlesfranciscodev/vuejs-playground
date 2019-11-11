@@ -158,8 +158,7 @@ def create_or_update_contact():
 
 
 @contacts_blueprint.route("/api/test")
-@login_required
-def test(_):
+def test():
     response = {
         "message": "Yo mamma so fat even penguins are jealous of the way she waddles."
     }
