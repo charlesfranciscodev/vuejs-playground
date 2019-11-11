@@ -47,6 +47,7 @@ class Contact(db.Model):
     last_name = db.Column(db.String(255), nullable=False)
     username = db.Column(db.String(255), unique=True, nullable=False)
     hashed_password = db.Column(db.String(60), nullable=False)
+    salt = db.Column(db.String(29), nullable=False)
     email = db.Column(db.String(255), unique=True, nullable=False)
     birthdate = db.Column(db.DateTime, nullable=False)
     phone_number = db.Column(db.String(255), nullable=False)
@@ -59,10 +60,42 @@ class Contact(db.Model):
         backref=db.backref("contacts", lazy=True)
     )
 
-    @staticmethod
-    def hash_password(password):
+    def hash_password(self, password):
         salt = bcrypt.gensalt()
-        return bcrypt.hashpw(password.encode("utf-8"), salt).decode()
+        self.hashed_password = bcrypt.hashpw(password.encode("utf-8"), salt).decode()
+        self.salt = salt.decode()
+
+    def encode_auth_token(self):
+        """Generate the auth token."""
+        now = datetime.datetime.utcnow()
+        delta = datetime.timedelta(
+            days=current_app.config.get("TOKEN_EXPIRATION_DAYS"),
+            seconds=current_app.config.get("TOKEN_EXPIRATION_SECONDS")
+        )
+        payload = {
+            "exp": now + delta,
+            "iat": now,
+            "sub": self.contact_id
+        }
+        return jwt.encode(
+            payload,
+            current_app.config.get("SECRET_KEY"),
+            algorithm="HS256"
+        )
+
+    @staticmethod
+    def decode_auth_token(auth_token):
+        """Decode the auth token."""
+        try:
+            payload = jwt.decode(
+                auth_token,
+                current_app.config.get("SECRET_KEY")
+            )
+            return payload["sub"]
+        except jwt.ExpiredSignatureError:
+            return "Signature expired. Please log in again."
+        except jwt.InvalidTokenError:
+            return "Invalid token. Please log in again."
 
     def to_dict(self):
         contact_dict = {
@@ -84,6 +117,7 @@ class Contact(db.Model):
             "contact_id": self.contact_id,
             "first_name": self.first_name,
             "last_name": self.last_name,
+            "username": self.username,
             "avatar_url": self.avatar_url,
         }
         return contact_dict

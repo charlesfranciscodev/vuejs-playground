@@ -1,4 +1,7 @@
+import bcrypt
 import dateutil.parser
+
+from functools import wraps
 
 from flask import Blueprint, jsonify, request, render_template, Response
 
@@ -14,9 +17,54 @@ contacts_blueprint = Blueprint(
 )
 
 
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        response = {
+            "message": "Please provide a valid auth token."
+        }
+        auth_header = request.headers.get("Authorization")
+        if not auth_header:
+            return jsonify(response), 403
+        auth_token = auth_header.split(" ")[1]
+        value = User.decode_auth_token(auth_token)
+        if isinstance(value, str):
+            response["message"] = value
+            return jsonify(response), 401
+        user = User.query.filter_by(user_id=value).first()
+        if user is None:
+            return jsonify(response), 401
+        return f(value, *args, **kwargs)
+    return decorated_function
+
+
 @contacts_blueprint.route("/")
 def index():
     return render_template("index.html")
+
+
+@contacts_blueprint.route("/login", methods=["POST"])
+def login():
+    response = {}
+    request_json = request.get_json()
+    username = request_json["username"]
+    password = request_json["password"].encode("utf-8")
+
+    # verify credentials
+    contact = Contact.query.filter_by(username=username).first()
+    if contact is None:
+        response["message"] = "Invalid username or password."
+        return jsonify(response), 401
+    hashed_password = bcrypt.hashpw(password, contact.salt.encode("utf-8")).decode()
+    if hashed_password != contact.hashed_password:
+        response["message"] = "Invalid username or password."
+        return jsonify(response), 401
+
+    # Generate auth token
+    auth_token = contact.encode_auth_token()
+    response = contact.to_partial_dict()
+    response["token"] = auth_token.decode()
+    return jsonify(response)
 
 
 @contacts_blueprint.route("/api/contacts")
@@ -90,7 +138,7 @@ def create_or_update_contact():
     contact.avatar_url = request_json["avatar_url"]
     contact.description = request_json["description"]
     if "password" in request_json:
-        contact.hashed_password = contact.hash_password(request_json["password"])
+        contact.hash_password(request_json["password"])
     if "projects" in request_json:
         if request.method == "PUT":
             contact.projects = []

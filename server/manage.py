@@ -54,7 +54,7 @@ def create_contacts():
             contact.first_name = contact_dict["firstName"]
             contact.last_name = contact_dict["lastName"]
             contact.username = contact_dict["username"]
-            contact.hashed_password = contact.hash_password(contact_dict["password"])
+            contact.hash_password(contact_dict["password"])
             contact.last_name = contact_dict["lastName"]
             contact.email = contact_dict["email"]
             contact.birthdate = dateutil.parser.parse(contact_dict["birthdate"])
