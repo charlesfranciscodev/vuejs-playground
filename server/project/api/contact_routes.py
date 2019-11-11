@@ -14,13 +14,13 @@ contacts_blueprint = Blueprint(
 )
 
 
-@blueprint.route("/")
+@contacts_blueprint.route("/")
 def index():
     return render_template("index.html")
 
 
-@blueprint.route("/api/contacts")
-def contacts():
+@contacts_blueprint.route("/api/contacts")
+def get_contacts():
     response = []
     contacts = db.session.query(Contact).all()
     for contact in contacts:
@@ -28,8 +28,8 @@ def contacts():
     return jsonify(response)
 
 
-@blueprint.route("/api/contacts/<int:contact_id>", methods=["GET", "DELETE"])
-def contact(contact_id):
+@contacts_blueprint.route("/api/contacts/<int:contact_id>", methods=["GET", "DELETE"])
+def get_contact(contact_id):
     contact = Contact.query.filter_by(contact_id=contact_id).first()
     if contact is None:
         return Response(status=404)
@@ -41,7 +41,7 @@ def contact(contact_id):
         return Response(status=204)
 
 
-@blueprint.route("/api/contacts", methods=["POST", "PUT"])
+@contacts_blueprint.route("/api/contacts", methods=["POST", "PUT"])
 def create_or_update_contact():
     response = {}
     request_json = request.get_json()
@@ -91,7 +91,7 @@ def create_or_update_contact():
     return jsonify(response), 201
 
 
-@blueprint.route("/api/test")
+@contacts_blueprint.route("/api/test")
 def test():
     response = {
         "message": "Yo mamma so fat even penguins are jealous of the way she waddles."

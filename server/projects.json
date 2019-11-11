@@ -1,40 +1,100 @@
 [
   {
-    "name": "League of Legends"
+    "name": "League of Legends",
+    "releaseDate": "2009-10-27",
+    "websiteUrl": "https://www.leagueoflegends.com/",
+    "logoUrl": "https://charlesfranciscodev.github.io/images/placeimg/arch1.jpeg",
+    "description": "Chambray adaptogen cliche banjo leggings, raw denim trust fund hella farm-to-table post-ironic deep v bushwick chartreuse. Artisan air plant tattooed enamel pin truffaut bushwick narwhal, stumptown vexillologist gluten-free. Cardigan vinyl kinfolk marfa, truffaut pitchfork asymmetrical cold-pressed celiac. Master cleanse sriracha polaroid gastropub asymmetrical woke.",
+    "platforms": [3]
   },
   {
-    "name": "Uncharted 4: A Thief's End"
+    "name": "Uncharted 4: A Thief's End",
+    "releaseDate": "2016-05-10",
+    "websiteUrl": "http://www.unchartedthegame.com/en-us/games/uncharted-4",
+    "logoUrl": "https://charlesfranciscodev.github.io/images/placeimg/nature1.jpeg",
+    "description": "Master cleanse live-edge heirloom leggings chartreuse tousled locavore microdosing tattooed direct trade photo booth VHS. Crucifix coloring book vinyl roof party, freegan sustainable microdosing. Photo booth humblebrag deep v gochujang pitchfork mlkshk small batch synth kinfolk craft beer schlitz. Try-hard forage squid sustainable normcore. Vegan banh mi salvia, kale chips semiotics farm-to-table post-ironic pork belly hammock. Keytar typewriter neutra listicle.",
+    "platforms": [2]
   },
   {
-    "name": "Halo 5: Guardians"
+    "name": "Halo 5: Guardians",
+    "releaseDate": "2015-10-27",
+    "websiteUrl": "https://www.halowaypoint.com/en-us/games/halo-5-guardians",
+    "logoUrl": "https://charlesfranciscodev.github.io/images/placeimg/tech1.jpeg",
+    "description": "Marfa 8-bit drinking vinegar williamsburg selfies waistcoat, heirloom food truck shabby chic. Hell of twee small batch, seitan godard hella you probably haven't heard of them palo santo ramps vegan pickled chia chambray la croix shoreditch. Retro PBR&B chillwave food truck cray kinfolk. Succulents +1 selvage kitsch mustache 90's. Actually cloud bread gochujang VHS mixtape etsy bespoke. Freegan organic yr hashtag biodiesel, keffiyeh edison bulb bespoke mixtape.",
+    "platforms": [1]
   },
   {
-    "name": "Mirror's Edge Catalyst"
-  },
-  {
-    "name": "Final Fantasy XV"
+    "name": "Mirror's Edge Catalyst",
+    "releaseDate": "2016-06-07",
+    "websiteUrl": "http://mirrorsedge.com/",
+    "logoUrl": "https://charlesfranciscodev.github.io/images/placeimg/arch2.jpeg",
+    "description": "Gluten-free PBR&B put a bird on it, 8-bit cred VHS food truck twee XOXO. Before they sold out hashtag lo-fi XOXO green juice, messenger bag viral blue bottle stumptown aesthetic marfa next level. Helvetica mlkshk occupy lumbersexual chia aesthetic. Banjo art party raclette ethical kinfolk health goth williamsburg fixie. Yr mlkshk put a bird on it fam single-origin coffee leggings tousled iPhone.",
+    "platforms": [1, 2, 3]
   },
 
   {
-    "name": "FIFA 20"
+    "name": "Final Fantasy XV",
+    "releaseDate": "2016-10-29",
+    "websiteUrl": "https://finalfantasyxv.square-enix-games.com/",
+    "logoUrl": "https://charlesfranciscodev.github.io/images/placeimg/nature2.jpeg",
+    "description": "Cloud bread locavore raclette, art party heirloom shaman keffiyeh disrupt retro iceland meditation. Cloud bread YOLO put a bird on it snackwave, narwhal tumblr hammock tote bag biodiesel palo santo. Tumblr flexitarian chambray PBR&B craft beer fanny pack tousled edison bulb drinking vinegar portland gastropub lo-fi. Kickstarter heirloom actually humblebrag mixtape helvetica cornhole man braid. Pork belly narwhal chia trust fund art party subway tile pok pok organic. Poke sustainable live-edge freegan kombucha chartreuse chillwave enamel pin salvia selvage swag wayfarers hella williamsburg irony.",
+    "platforms": [1, 2, 3]
   },
   {
-    "name": "Overwatch"
+    "name": "FIFA 20",
+    "releaseDate": "2019-09-27",
+    "websiteUrl": "https://www.ea.com/games/fifa/fifa-20",
+    "logoUrl": "https://charlesfranciscodev.github.io/images/placeimg/tech2.jpeg",
+    "description": "Normcore irony keytar tacos brunch before they sold out. Vape affogato everyday carry hexagon. Ramps health goth asymmetrical humblebrag paleo, truffaut vaporware bicycle rights taxidermy mustache put a bird on it banjo. Tote bag skateboard aesthetic beard put a bird on it biodiesel.",
+    "platforms": [1, 2, 3]
   },
   {
-    "name": "Infamous Second Son"
+    "name": "Overwatch",
+    "releaseDate": "2016-05-24",
+    "websiteUrl": "https://playoverwatch.com/",
+    "logoUrl": "https://charlesfranciscodev.github.io/images/placeimg/arch3.jpeg",
+    "description": "Af echo park thundercats, readymade gastropub 90's heirloom iPhone pour-over small batch coloring book gluten-free YOLO DIY. Freegan cold-pressed umami semiotics, gluten-free hoodie art party sustainable green juice poutine hella seitan. Seitan raw denim hexagon austin, iPhone YOLO subway tile church-key tumblr pop-up stumptown migas prism disrupt messenger bag. Vape gentrify art party enamel pin health goth, 8-bit kogi activated charcoal normcore vaporware flannel blog unicorn tofu chambray.",
+    "platforms": [1, 2, 3]
   },
   {
-    "name": "Grand Theft Auto V"
-  },
-  {
-    "name": "Minecraft"
+    "name": "Infamous Second Son",
+    "releaseDate": "2014-03-21",
+    "websiteUrl": "http://us.playstation.com/ps4/games/infamous-second-son-ps4.html",
+    "logoUrl": "https://charlesfranciscodev.github.io/images/placeimg/nature3.jpeg",
+    "description": "Everyday carry meditation tumblr helvetica locavore. Affogato farm-to-table vice pickled stumptown snackwave, YOLO biodiesel messenger bag leggings meggings hexagon thundercats authentic street art. Portland williamsburg helvetica bitters flexitarian four dollar toast hoodie food truck. Fam hexagon yuccie gluten-free fashion axe taxidermy listicle tumblr.",
+    "platforms": [2]
   },
 
   {
-    "name": "Uncharted 3: Drake's Deception"
+    "name": "Grand Theft Auto V",
+    "releaseDate": "2013-09-17",
+    "websiteUrl": "https://www.rockstargames.com/V/",
+    "logoUrl": "https://charlesfranciscodev.github.io/images/placeimg/tech3.jpeg",
+    "description": "Pabst sustainable post-ironic organic tattooed adaptogen salvia before they sold out farm-to-table narwhal taiyaki williamsburg. Tumeric sartorial deep v, pok pok pug flexitarian etsy tote bag brooklyn letterpress umami hashtag. Kinfolk glossier tbh taxidermy paleo, fingerstache subway tile kogi williamsburg cardigan yr butcher sriracha. Sartorial tattooed af, messenger bag fanny pack affogato flannel truffaut williamsburg poutine skateboard air plant meditation vape. Intelligentsia blog pork belly jianbing 90's, hexagon jean shorts direct trade artisan heirloom franzen semiotics venmo kogi master cleanse. Whatever twee small batch, seitan slow-carb dreamcatcher palo santo enamel pin vegan messenger bag literally readymade ramps wayfarers. Tofu forage quinoa banh mi meditation kale chips schlitz trust fund ennui freegan flexitarian shaman shoreditch helvetica hammock.",
+    "platforms": [1, 2, 3]
   },
   {
-    "name": "Call of Duty: Modern Warfare"
+    "name": "Minecraft",
+    "releaseDate": "2011-11-18",
+    "websiteUrl": "https://www.minecraft.net/",
+    "logoUrl": "https://charlesfranciscodev.github.io/images/placeimg/arch4.jpeg",
+    "description": "Keytar narwhal subway tile cold-pressed, scenester wolf thundercats af fingerstache microdosing drinking vinegar. Readymade biodiesel marfa, lumbersexual hell of sartorial cornhole authentic small batch. Kombucha cliche irony fanny pack scenester. Portland cornhole microdosing poutine.",
+    "platforms": [3, 4]
+  },
+  {
+    "name": "Uncharted: Drake's Fortune",
+    "releaseDate": "2007-11-20",
+    "websiteUrl": "http://www.unchartedps3.com/",
+    "logoUrl": "https://charlesfranciscodev.github.io/images/placeimg/nature4.jpeg",
+    "description": "Hell of irony man bun ennui, bitters four dollar toast chambray schlitz actually kogi hoodie +1 gochujang. Mlkshk distillery whatever, portland deep v williamsburg intelligentsia air plant pok pok PBR&B tacos echo park cray. Iceland echo park pour-over tattooed palo santo VHS cornhole plaid taxidermy +1. Kinfolk neutra fashion axe quinoa. Hoodie kinfolk beard enamel pin vinyl post-ironic stumptown sustainable tattooed keytar. Slow-carb irony bushwick selvage, gastropub chillwave meggings poutine photo booth tbh mustache paleo.",
+    "platforms": [2]
+  },
+  {
+    "name": "Call of Duty: Modern Warfare",
+    "releaseDate": "2019-10-25",
+    "websiteUrl": "https://www.callofduty.com/",
+    "logoUrl": "https://charlesfranciscodev.github.io/images/placeimg/tech4.jpeg",
+    "description": "Small batch before they sold out art party organic hot chicken kombucha knausgaard sartorial squid, iceland humblebrag roof party glossier truffaut hashtag. Roof party XOXO locavore enamel pin. Bitters pok pok listicle, cloud bread gluten-free heirloom pour-over fashion axe cred retro kitsch biodiesel. Tote bag jianbing activated charcoal, unicorn pinterest disrupt chia prism sriracha brunch lo-fi small batch. Snackwave williamsburg pork belly, +1 hot chicken typewriter food truck air plant pickled cronut truffaut activated charcoal.",
+    "platforms": [1, 2, 3]
   }
 ]

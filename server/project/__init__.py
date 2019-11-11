@@ -23,8 +23,10 @@ def create_app(script_info=None):
     cors.init_app(app)
 
     # register blueprints
-    from project.api.routes import contacts_blueprint
+    from project.api.contact_routes import contacts_blueprint
+    from project.api.project_routes import projects_blueprint
     app.register_blueprint(contacts_blueprint)
+    app.register_blueprint(projects_blueprint)
 
     # shell context for flask cli
     @app.shell_context_processor

@@ -12,7 +12,7 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 * Each contact can be clicked to show a detailed view of the contact.
 * Shows the contact's information.
   * Full Name
-  * Username
+  * *Username*
   * Age
   * Email Address
   * Phone Number
@@ -20,8 +20,6 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
   * Avatar
   * **Project(s)**
 * The frontend route path is `/view/{:id}`.
-
-### Navigation Bar
 
 ### Create New Contact Page
 * Create a new contact.
@@ -41,28 +39,29 @@ Contact List Web App with Bootstrap, Vue.js, Flask and SQLAlchemy.
 * The frontend route path is `/projects` (link in the navbar).
 
 ### View Project Page
-* requires authentication
+* requires authentication (should display a permission error in the frontend and protected in the backend)
 * Each project can be clicked to show a detailed view of the project.
 * Shows the project's information.
   * Name
   * **Platform(s)**
-    * Name
-    * Icon
   * Release Date
-  * Website
   * Description
+  * Website
   * Logo
 * The frontend route path is `/project/{:id}`.
 
 ### Authentication
 * [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) for password hashing in the backend.
 * [JSON Web Tokens](https://jwt.io/) for storing the credentials in the frontend.
-* Login with username and password
+* Sign Up
+* Login with username and password (display the current user in the navbar)
 * Logout
 
-### Other
+### Bonus
+* Show a confirmation before deleting a contact.
 * Sort contacts on the home page by first name or last name.
 * General Search Bar on the home page which finds matches for first name, last name or username.
+* Allow the user to login with his email as well.
 
 ## API Routes
 
@@ -133,3 +132,5 @@ docker-compose -f docker-compose-dev.yml exec database psql -U postgres
 * [Flask](https://palletsprojects.com/p/flask/)
 * [SQLAlchemy](https://www.sqlalchemy.org/)
 * [Random User Generator](https://randomuser.me/)
+* [Diverse UI](https://diverseui.com/)
+* [PlaceIMG](https://placeimg.com/)

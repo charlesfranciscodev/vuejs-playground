@@ -6,7 +6,7 @@ RUN apk update && \
     apk add --virtual build-deps gcc python-dev musl-dev && \
     apk add postgresql-dev && \
     apk add netcat-openbsd && \
-    build-essential libffi-dev
+    apk add musl-dev gcc libffi-dev
 
 # set working directory
 RUN mkdir -p /usr/src/app
