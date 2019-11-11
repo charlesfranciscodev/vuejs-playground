@@ -27,12 +27,12 @@ def login_required(f):
         if not auth_header:
             return jsonify(response), 403
         auth_token = auth_header.split(" ")[1]
-        value = User.decode_auth_token(auth_token)
+        value = Contact.decode_auth_token(auth_token)
         if isinstance(value, str):
             response["message"] = value
             return jsonify(response), 401
-        user = User.query.filter_by(user_id=value).first()
-        if user is None:
+        contact = Contact.query.filter_by(contact_id=value).first()
+        if contact is None:
             return jsonify(response), 401
         return f(value, *args, **kwargs)
     return decorated_function
@@ -158,7 +158,8 @@ def create_or_update_contact():
 
 
 @contacts_blueprint.route("/api/test")
-def test():
+@login_required
+def test(_):
     response = {
         "message": "Yo mamma so fat even penguins are jealous of the way she waddles."
     }
