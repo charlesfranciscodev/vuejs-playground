@@ -9,13 +9,27 @@ const ContactFormMixin = {
         "contact_id": this.$route.params.id,
         "first_name": "",
         "last_name": "",
+        "username": "",
+        "password": "",
         "email": "",
         "birthdate": "",
         "phone_number": "",
         "avatar_url": "",
-        "description": ""
+        "description": "",
+        "projects": []
       },
-      errors: []
+      labels: {
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "username": "Username",
+        "password": "Password",
+        "birthdate": "Birthdate",
+        "phone_number": "Phone Number",
+        "avatar_url": "Avatar URL",
+        "description": "Description"
+      },
+      projects: [],
+      errors: [],
     }
   },
 
@@ -31,38 +45,15 @@ const ContactFormMixin = {
       let valid = true;
       this.errors = [];
 
-      if (this.contact.first_name === "") {
-        this.errors.push("First Name required.");
-        valid = false;
-      }
-
-      if (this.contact.last_name === "") {
-        this.errors.push("Last Name required.");
-        valid = false;
+      for (let [key, label] of Object.entries(this.labels)) {
+        if (this.contact[key] === "") {
+          this.errors.push(`${label} required.`);
+          valid = false;
+        }
       }
 
       if (!this.validateEmail(this.contact.email)) {
         this.errors.push("Invalid Email.");
-        valid = false;
-      }
-
-      if (this.contact.birthdate === "") {
-        this.errors.push("Birthdate required.");
-        valid = false;
-      }
-
-      if (this.contact.phone_number === "") {
-        this.errors.push("Phone Number required.");
-        valid = false;
-      }
-
-      if (this.contact.avatar_url === "") {
-        this.errors.push("Avatar URL required.");
-        valid = false;
-      }
-
-      if (this.contact.description === "") {
-        this.errors.push("Description required.");
         valid = false;
       }
 
@@ -74,8 +65,7 @@ const ContactFormMixin = {
         return;
       }
 
-      let errors = this.errors;
-      let router = this.$router;
+      let that = this;
 
       const url = `/api/contacts`;
       const options = {
@@ -97,12 +87,26 @@ const ContactFormMixin = {
         }
       }).then(response => response.json())
       .then(function(responseJson) {
-        router.push(`/view/${responseJson.contact_id}`);
+        that.router.push(`/view/${responseJson.contact_id}`);
       })
       .catch(function(error){
-        errors.push(error);
+        that.errors.push(error);
       });
     }
+  },
+
+  created() {
+    const url = "/api/projects";
+    fetch(url)
+    .then(function(response) {
+      if (response.ok) {
+        return Promise.resolve(response);
+      } else {
+        return Promise.reject(new Error(response.statusText));
+      }
+    }).then(response => response.json())
+    .then(data => this.projects = data)
+    .catch(error => console.log(error));
   }
 }
 

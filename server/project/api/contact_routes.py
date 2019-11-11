@@ -94,8 +94,8 @@ def create_or_update_contact():
     if "projects" in request_json:
         if request.method == "PUT":
             contact.projects = []
-        for project_id in request_json["projects"]:
-            project = Project.query.filter_by(project_id=project_id).first()
+        for project_dict in request_json["projects"]:
+            project = Project.query.filter_by(project_id=project_dict["project_id"]).first()
             contact.projects.append(project)
 
     if request.method == "POST":
