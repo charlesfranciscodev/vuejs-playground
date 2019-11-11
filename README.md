@@ -40,12 +40,12 @@ The goal of this project is to build a web app with Vue.js, without using a pack
 * Logout
 
 ### View Projects Page
-* requires authentication (should be hidden in the frontend and protected in the backend)
-* View an image gallery of all projects the current user is in.
+* requires authentication
+* View an image gallery of all projects the current user is assigned to.
 * The frontend route path is `/projects` (link in the navbar).
 
 ### View Project Page
-* requires authentication (should display a permission error in the frontend and protected in the backend)
+* requires authentication (only visible if the current user is assigned to the project)
 * Each project can be clicked to show a detailed view of the project.
 * Shows the project's information.
   * Name
@@ -62,7 +62,7 @@ The goal of this project is to build a web app with Vue.js, without using a pack
 
 ### Bonus
 * Show a confirmation before deleting a contact.
-* Display a warning message when a user is not assigned to any projects.
+* Display a warning message on the contact detail page when a contact is not assigned to any projects.
 * Sort contacts on the home page by first name or last name.
 * General Search Bar on the home page which finds matches for first name, last name or username.
 * Allow the user to login with his email as well.

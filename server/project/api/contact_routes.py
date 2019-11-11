@@ -25,7 +25,7 @@ def login_required(f):
         }
         auth_header = request.headers.get("Authorization")
         if not auth_header:
-            return jsonify(response), 403
+            return jsonify(response), 401
         auth_token = auth_header.split(" ")[1]
         value = Contact.decode_auth_token(auth_token)
         if isinstance(value, str):
