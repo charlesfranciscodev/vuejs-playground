@@ -129,9 +129,9 @@ docker-compose -f docker-compose-dev.yml exec database psql -U postgres
 
 ## References
 * [Microservices with Docker and Flask](https://github.com/testdrivenio/testdriven-app-2.4)
-* [Bootstrap](https://getbootstrap.com/)
 * [Vue.js](https://vuejs.org/)
 * [New in Vue: ES Module Browser Build](https://vuejsdevelopers.com/2019/02/04/vue-es-module-browser-build/)
+* [Bootstrap](https://getbootstrap.com/)
 * [Flask](https://palletsprojects.com/p/flask/)
 * [SQLAlchemy](https://www.sqlalchemy.org/)
 
