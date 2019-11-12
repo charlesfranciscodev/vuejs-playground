@@ -132,9 +132,10 @@ docker-compose -f docker-compose-dev.yml exec database psql -U postgres
 * [Bootstrap](https://getbootstrap.com/)
 * [Vue.js](https://vuejs.org/)
 * [New in Vue: ES Module Browser Build](https://vuejsdevelopers.com/2019/02/04/vue-es-module-browser-build/)
-* [Use Vue to create a SPA without any Node modules](https://dev.to/arswaw/create-a-lightweight-componentized-spa-without-node-569j)
 * [Flask](https://palletsprojects.com/p/flask/)
 * [SQLAlchemy](https://www.sqlalchemy.org/)
+
+## Data
 * [Random User Generator](https://randomuser.me/)
 * [Diverse UI](https://diverseui.com/)
 * [PlaceIMG](https://placeimg.com/)
