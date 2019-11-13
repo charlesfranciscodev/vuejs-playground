@@ -15,7 +15,7 @@ const Navbar = {
   },
 
   computed: {
-    classObject: function () {
+    classProperty: function () {
       return {
         "collapse": this.collapse,
         "in": !this.collapse

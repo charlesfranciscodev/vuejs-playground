@@ -11,6 +11,7 @@ import CreateContact from "./components/createContact.component.js";
 import UpdateContact from "./components/updateContact.component.js";
 import About from "./components/about.component.js";
 import ContactDetail from "./components/contactDetail.component.js";
+import LoginForm from "./components/loginForm.component.js";
 
 Vue.use(VueRouter);
 
@@ -50,6 +51,11 @@ const router = new VueRouter({
       path: "/view/:id",
       component: ContactDetail,
       name: "view"
+    },
+    {
+      path: "/login",
+      component: LoginForm,
+      name: "login"
     }
   ]
 });
