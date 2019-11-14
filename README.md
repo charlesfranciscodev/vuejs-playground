@@ -84,7 +84,7 @@ The goal of this project is to build a web app with Vue.js, without using a pack
 * **POST** `/login`
 
 ## Setup
-To make the frontend app work, download vue and vue-router from a CDN:
+To make the frontend app work, download vue, vue-router and vuex:
 * https://cdnjs.com/libraries/vue
 * https://cdnjs.com/libraries/vue-router
 * https://cdnjs.com/libraries/vuex
