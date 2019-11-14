@@ -1,72 +1,33 @@
+import { mapActions, mapGetters } from "../vuex.esm.browser.js";
+
 import LoginFormTemplate from "../templates/loginForm.template.js";
 
 const LoginForm = {
   data: function() {
     return {
-      user: {
+      formData: {
         "username": "",
         "password": ""
-      },
-      errors: [],
+      }
     }
   },
 
   template: LoginFormTemplate,
 
+  computed: mapGetters(["errors"]),
+
   methods: {
-    validateForm: function() {
-      let valid = true;
-      this.errors = [];
-
-      if (this.user["username"] === "") {
-        this.errors.push("Username required.");
-        valid = false;
-      }
-
-      if (this.user["password"] === "") {
-        this.errors.push("Password required.");
-        valid = false;
-      }
-
-      return valid;
-    },
+    ...mapActions(["login"]),
 
     loginButtonClick: function(event) {
-      if (!this.validateForm()) {
-        return;
-      }
-
       let that = this;
 
-      const url = "/login";
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(this.user)
-      }
-      fetch(url, options)
-      .then(function(response) {
-        if (response.ok) {
-          return Promise.resolve(response);
-        } else {
-          return response.json().then(function(responseJson) {
-            let error = new Error(responseJson.message);
-            return Promise.reject(error);
-          });
-        }
-      }).then(response => response.json())
-      .then(function(responseJson) {
-        console.log(responseJson);
-        // TODO save in global state
-
-        // redirect to the previous page (in the history)
-
+      this.login(this.formData)
+      .then(() => {
+        // go back to the previous page
+        that.$router.go(-1);
       })
-      .catch(function(error){
-        that.errors.push(error);
-      });
+      .catch(() => console.log("login error"));
     }
   },
 }

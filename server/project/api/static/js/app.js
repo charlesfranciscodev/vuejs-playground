@@ -1,6 +1,8 @@
 import Vue from "./vue.esm.browser.js";
 import VueRouter from "./vue-router.esm.browser.js";
 
+import store from "./store/index.js";
+
 import AppTemplate from "./templates/app.template.js";
 
 import Jumbotron from "./components/jumbotron.component.js";
@@ -71,4 +73,7 @@ new Vue({
   router,
 
   template: AppTemplate,
-})
+
+  store
+});
+

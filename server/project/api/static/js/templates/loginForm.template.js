@@ -9,7 +9,7 @@ const LoginFormTemplate = `
 
   <div class="form-group row">
     <div class="input-group col-sm-4 offset-sm-4">
-      <input v-model="user.username" type="text" class="form-control" id="username" placeholder="Username">
+      <input v-model="formData.username" type="text" class="form-control" id="username" placeholder="Username">
 
       <div class="input-group-append">
         <span class="input-group-text">
@@ -21,7 +21,7 @@ const LoginFormTemplate = `
 
   <div class="form-group row">
     <div class="input-group col-sm-4 offset-sm-4">
-      <input v-model="user.password" type="password" class="form-control" id="password" placeholder="Password">
+      <input v-model="formData.password" type="password" class="form-control" id="password" placeholder="Password">
 
       <div class="input-group-append">
         <span class="input-group-text">
