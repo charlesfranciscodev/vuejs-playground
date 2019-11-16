@@ -12,7 +12,7 @@ services:
     environment:
       - FLASK_APP=project/__init__.py
       - FLASK_ENV=development
-      - APP_SETTINGS=project.config.BaseConfig
+      - APP_SETTINGS=project.config.DevelopmentConfig
       - DATABASE_URL=postgres://postgres:postgres@database:5432/db_dev
     depends_on:
       - database
