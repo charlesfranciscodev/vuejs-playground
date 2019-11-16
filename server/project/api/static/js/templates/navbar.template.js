@@ -36,7 +36,7 @@ const NavbarTemplate = `
     <ul v-if="!loggedIn" class="navbar-nav text-center">
       <li class="nav-item">
         <a class="nav-link" href="/#/login">
-        <i class="fas fa-sign-in-alt"></i> Login
+          <i class="fas fa-sign-in-alt"></i> Login
         </a>
       </li>
     </ul>
