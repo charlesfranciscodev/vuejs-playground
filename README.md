@@ -66,7 +66,7 @@ The goal of this project is to build a web app with Vue.js, without using a pack
 * Sort contacts on the home page by first name or last name.
 * General Search Bar on the home page which finds matches for first name, last name or username.
 * Allow the user to login with his email as well.
-* If a user is trying to access a page that require authentication and he is not allowed to view that page, show an error message.
+* If a user is trying to access a page that requires authentication and he is not allowed to view that page, show an error message.
 
 ## API Routes
 
