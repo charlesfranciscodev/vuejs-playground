@@ -87,7 +87,7 @@ const ContactFormMixin = {
         }
       }).then(response => response.json())
       .then(function(responseJson) {
-        that.router.push(`/view/${responseJson.contact_id}`);
+        that.$router.push(`/view/${responseJson.contact_id}`);
       })
       .catch(function(error){
         that.errors.push(error);
@@ -96,7 +96,7 @@ const ContactFormMixin = {
   },
 
   created() {
-    const url = "/api/projects";
+    const url = "/api/all-projects";
     fetch(url)
     .then(function(response) {
       if (response.ok) {

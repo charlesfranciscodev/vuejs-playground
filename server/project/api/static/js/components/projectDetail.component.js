@@ -1,25 +1,26 @@
 import { mapGetters } from "../vuex.esm.browser.js";
 
-import { ProjectGalleryTemplate } from "../templates/projectGallery.template.js";
-import ProjectCard from "./projectCard.component.js";
+import { ProjectDetailTemplate } from "../templates/projectDetail.template.js";
 
-const ProjectGallery = {
+const ProjectDetail = {
   data: function() {
     return {
-      projects: []
+      project: {}
     }
   },
 
-  computed: mapGetters(["user"]),
+  computed: {
+    ...mapGetters(["user"]),
 
-  template: ProjectGalleryTemplate,
-
-  components: {
-    "project-card": ProjectCard
+    emptyProject: function() {
+      return Object.keys(this.project).length === 0;
+    }
   },
 
+  template: ProjectDetailTemplate,
+
   created() {
-    const url = "/api/projects";
+    const url = `/api/projects/${this.$route.params.id}`;
     const options = {
       headers: {
         "Authorization": `Bearer ${this.user.token}`
@@ -33,9 +34,9 @@ const ProjectGallery = {
         return Promise.reject(new Error(response.statusText));
       }
     }).then(response => response.json())
-    .then(data => this.projects = data)
+    .then(data => this.project = data)
     .catch(error => console.log(error));
   }
 };
 
-export default ProjectGallery;
+export default ProjectDetail;

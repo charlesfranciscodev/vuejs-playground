@@ -12,9 +12,16 @@ projects_blueprint = Blueprint(
 )
 
 
+@projects_blueprint.route("/api/all-projects")
+def get_all_projects():
+    projects = db.session.query(Project).all()
+    response = [project.to_partial_dict() for project in projects]
+    return jsonify(response)
+
+
 @projects_blueprint.route("/api/projects")
 @login_required
-def get_projects(contact_id):
+def get_projects_for_contact(contact_id):
     response = []
     contact = Contact.query.filter_by(contact_id=contact_id).first()
     for project in contact.projects:

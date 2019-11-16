@@ -39,9 +39,9 @@ const ContactDetailTemplate = `
       <div>
         <h3>Projects</h3>
 
-          <a v-for="project in contact.projects" :href="'/#/project/' + project.project_id" class="btn btn-outline-info mx-2 my-2">
-            {{ project.name }}
-          </a>
+        <a v-for="project in contact.projects" :href="'/#/project/' + project.project_id" class="btn btn-outline-info mx-2 my-2">
+          {{ project.name }}
+        </a>
       </div>
     </div>
 

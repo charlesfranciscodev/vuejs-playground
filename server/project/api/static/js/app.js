@@ -15,6 +15,7 @@ import About from "./components/about.component.js";
 import ContactDetail from "./components/contactDetail.component.js";
 import LoginForm from "./components/loginForm.component.js";
 import ProjectGallery from "./components/projectGallery.component.js";
+import ProjectDetail from "./components/projectDetail.component.js";
 
 Vue.use(VueRouter);
 
@@ -64,7 +65,12 @@ const router = new VueRouter({
       path: "/projects",
       component: ProjectGallery,
       name: "projects"
-    }
+    },
+    {
+      path: "/project/:id",
+      component: ProjectDetail,
+      name: "project"
+    },
   ]
 });
 
