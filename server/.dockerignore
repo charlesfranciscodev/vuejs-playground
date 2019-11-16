@@ -1,3 +1,4 @@
 .dockerignore
 Dockerfile
+Dockerfile-prod
 .gitignore

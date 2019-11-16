@@ -130,8 +130,70 @@ docker-compose -f docker-compose-dev.yml exec database psql -U postgres
 
 `docker-compose -f docker-compose-dev.yml exec client /bin/sh`
 
+## Deployment
+
+* Sign up for [Heroku](https://signup.heroku.com/)
+* Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+
+### Create a new app
+
+`heroku create`
+
+### Log in to the Heroku Container Registry
+
+`heroku container:login`
+
+### Provision a new Postgres database with the hobby-dev plan
+
+`heroku addons:create heroku-postgresql:hobby-dev`
+
+### Build the production image and tag it with the following format
+
+```shell
+cd server
+docker build -f Dockerfile-prod -t registry.heroku.com/<app-name>/web .
+```
+
+where `<app-name>` is the name of the Heroku app
+
+### Test Locally
+
+`docker run --name test -e "PORT=8765" -p 5002:8765 registry.heroku.com/<app-name>/web:latest`
+
+Now go to http://0.0.0.0:5002/api/test
+
+Once done delete the container:
+
+`docker rm test`
+
+### Push the image to the registry
+
+`docker push registry.heroku.com/mighty-basin-33270/web:latest`
+
+### Release the image
+
+`heroku container:release web`
+
+You should now see the app at
+
+https://app-name.herokuapp.com/
+
+where app-name is the name of the Heroku app
+
+### Database Setup
+
+```shell
+heroku run python manage.py recreate_db
+heroku run python manage.py seed_db
+```
+
+Now go to
+
+* https://app-name.herokuapp.com/api/contacts
+* https://app-name.herokuapp.com
+
 ## References
-* [Microservices with Docker and Flask](https://github.com/testdrivenio/testdriven-app-2.4)
+* [Test-Driven Development with Python, Flask, and Docker](https://testdriven.io/courses/tdd-flask/)
 * [Vue.js](https://vuejs.org/)
 * [New in Vue: ES Module Browser Build](https://vuejsdevelopers.com/2019/02/04/vue-es-module-browser-build/)
 * [Bootstrap](https://getbootstrap.com/)

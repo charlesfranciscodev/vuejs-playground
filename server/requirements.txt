@@ -5,3 +5,4 @@ flask-cors
 python-dateutil
 bcrypt
 pyjwt
+gunicorn

@@ -12,6 +12,10 @@ RUN apk update && \
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
+# set environment varibles
+ENV FLASK_ENV production
+ENV APP_SETTINGS project.config.ProductionConfig
+
 # add and install requirements
 COPY ./requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r requirements.txt
@@ -20,4 +24,4 @@ RUN pip install -r requirements.txt
 COPY . /usr/src/app
 
 # run server
-CMD python manage.py run -h 0.0.0.0
+CMD gunicorn -b 0.0.0.0:$PORT manage:app
