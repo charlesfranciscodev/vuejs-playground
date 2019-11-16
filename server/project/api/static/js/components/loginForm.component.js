@@ -20,12 +20,10 @@ const LoginForm = {
     ...mapActions(["login"]),
 
     loginButtonClick: function(event) {
-      let that = this;
-
       this.login(this.formData)
       .then(() => {
         // go back to the previous page
-        that.$router.go(-1);
+        this.$router.go(-1);
       })
       .catch(() => console.log("login error"));
     }

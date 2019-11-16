@@ -33,11 +33,22 @@ const NavbarTemplate = `
       </li>
     </ul>
 
-
-    <ul class="navbar-nav text-center">
+    <ul v-if="!loggedIn" class="navbar-nav text-center">
       <li class="nav-item">
         <a class="nav-link" href="/#/login">
-          <i class="fas fa-sign-in-alt"></i> Login
+        <i class="fas fa-sign-in-alt"></i> Login
+        </a>
+      </li>
+    </ul>
+
+    <span v-if="loggedIn" class="navbar-text">
+      Welcome {{ user.username }}
+    </span>
+
+    <ul v-if="loggedIn" class="navbar-nav text-center">
+      <li class="nav-item">
+        <a v-on:click="logoutButtonClick" class="nav-link" id="logout">
+          <i class="fas fa-sign-out-alt"></i> Logout
         </a>
       </li>
     </ul>

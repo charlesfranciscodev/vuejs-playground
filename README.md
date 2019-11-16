@@ -35,9 +35,13 @@ The goal of this project is to build a web app with Vue.js, without using a pack
 ### Delete Contact
 * Each contact can be deleted from the home page or the detail view.
 
-### Login Page
-* Login with username and password (display the current user in the navbar)
-* Logout
+### Authentication
+* [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) for password hashing in the backend.
+* [JSON Web Tokens](https://jwt.io/) for storing the credentials in the frontend.
+
+### Login/Logout
+* Login page with username and password (display the current user in the navbar)
+* Logout from the navbar.
 
 ### View Projects Page
 * requires authentication
@@ -55,10 +59,6 @@ The goal of this project is to build a web app with Vue.js, without using a pack
   * Website
   * Logo
 * The frontend route path is `/project/{:id}`.
-
-### Authentication
-* [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) for password hashing in the backend.
-* [JSON Web Tokens](https://jwt.io/) for storing the credentials in the frontend.
 
 ### Bonus
 * Show a confirmation before deleting a contact.

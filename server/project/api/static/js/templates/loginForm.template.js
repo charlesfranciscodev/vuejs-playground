@@ -34,7 +34,7 @@ const LoginFormTemplate = `
   <div class="form-group row">
     <div class="input-group col-sm-4 offset-sm-4">
       <button v-on:click="loginButtonClick" class="btn btn-lg btn-block btn-primary mb-4">
-      <i class="fas fa-sign-in-alt"></i> Login
+        <i class="fas fa-sign-in-alt"></i> Login
       </button>
     </div>
   </div>

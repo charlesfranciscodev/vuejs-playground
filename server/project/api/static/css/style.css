@@ -10,3 +10,7 @@
 .avatar {
   width: 250px;
 }
+
+#logout {
+  cursor: pointer;
+}
