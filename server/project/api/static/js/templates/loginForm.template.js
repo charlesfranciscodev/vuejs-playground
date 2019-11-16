@@ -8,7 +8,7 @@ const LoginFormTemplate = `
   <h2 class="mb-4 text-center">Please enter your credentials</h2>
 
   <div class="form-group row">
-    <div class="input-group col-sm-4 offset-sm-4">
+    <div class="input-group col-md-6 offset-md-3 col-lg-4 offset-lg-4">
       <input v-model="formData.username" type="text" class="form-control" id="username" placeholder="Username">
 
       <div class="input-group-append">
@@ -20,7 +20,7 @@ const LoginFormTemplate = `
   </div>
 
   <div class="form-group row">
-    <div class="input-group col-sm-4 offset-sm-4">
+    <div class="input-group col-md-6 offset-md-3 col-lg-4 offset-lg-4">
       <input v-model="formData.password" type="password" class="form-control" id="password" placeholder="Password">
 
       <div class="input-group-append">
@@ -32,7 +32,7 @@ const LoginFormTemplate = `
   </div>
 
   <div class="form-group row">
-    <div class="input-group col-sm-4 offset-sm-4">
+    <div class="input-group col-md-6 offset-md-3 col-lg-4 offset-lg-4">
       <button v-on:click="loginButtonClick" class="btn btn-lg btn-block btn-primary mb-4">
         <i class="fas fa-sign-in-alt"></i> Login
       </button>

@@ -20,6 +20,12 @@ const NavbarTemplate = `
         </a>
       </li>
 
+      <li v-if="loggedIn" class="nav-item">
+        <a class="nav-link" href="/#/projects">
+          <i class="fas fa-gamepad"></i> Projects
+        </a>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="/#/about">
           <i class="fab fa-bootstrap"></i> About
@@ -33,20 +39,18 @@ const NavbarTemplate = `
       </li>
     </ul>
 
-    <ul v-if="!loggedIn" class="navbar-nav text-center">
-      <li class="nav-item">
+    <span v-if="loggedIn" class="navbar-text">
+      Hello {{ user.username }}
+    </span>
+
+    <ul class="navbar-nav text-center">
+      <li v-if="!loggedIn" class="nav-item">
         <a class="nav-link" href="/#/login">
           <i class="fas fa-sign-in-alt"></i> Login
         </a>
       </li>
-    </ul>
 
-    <span v-if="loggedIn" class="navbar-text">
-      Welcome {{ user.username }}
-    </span>
-
-    <ul v-if="loggedIn" class="navbar-nav text-center">
-      <li class="nav-item">
+      <li v-if="loggedIn" class="nav-item">
         <a v-on:click="logoutButtonClick" class="nav-link" id="logout">
           <i class="fas fa-sign-out-alt"></i> Logout
         </a>

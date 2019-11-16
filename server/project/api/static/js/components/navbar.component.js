@@ -14,11 +14,11 @@ const Navbar = {
 
     toggleMenu: function (event) {
       this.collapse = !this.collapse;
-      console.log(this.collapse);
     },
 
     logoutButtonClick: function(event) {
       this.logout();
+      this.$router.push({"name": "home"});
     }
   },
 
