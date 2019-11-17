@@ -104,7 +104,7 @@ class Contact(db.Model):
             "last_name": self.last_name,
             "username": self.username,
             "email": self.email,
-            "birthdate": self.birthdate.strftime("%Y-%m-%d"),
+            "birthdate": "{}Z".format(self.birthdate.isoformat()),
             "phone_number": self.phone_number,
             "avatar_url": self.avatar_url,
             "description": self.description,

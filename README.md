@@ -60,6 +60,10 @@ The goal of this project is to build a web app with Vue.js, without using a pack
   * Logo
 * The frontend route path is `/project/{:id}`.
 
+## Download Contacts Data as an Excel Sheet
+* with [SheetJS](https://sheetjs.com/)
+* with [pandas](https://pandas.pydata.org/)
+
 ### Bonus
 * Show a confirmation before deleting a contact.
 * Display a warning message on the contact detail page when a contact is not assigned to any projects.
@@ -126,9 +130,9 @@ docker-compose -f docker-compose-dev.yml exec database psql -U postgres
 \connect db_dev
 ```
 
-### Connect to the client
+### Connect to the server
 
-`docker-compose -f docker-compose-dev.yml exec client /bin/sh`
+`docker-compose -f docker-compose-dev.yml exec server /bin/sh`
 
 ## Deployment
 

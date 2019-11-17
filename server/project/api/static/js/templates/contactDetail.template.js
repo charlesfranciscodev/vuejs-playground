@@ -4,7 +4,7 @@ const ContactDetailTemplate = `
     <div class="col-sm-12 col-lg-3 text-center">
       <div>
         <h2>{{ fullName }}</h2>
-        <p class="font-weight-bold">{{ age }} years old</p>
+        <p class="font-weight-bold">{{ ageInYears }} years old</p>
 
         <p class="font-italic">
           <i class="fas fa-user"></i> 

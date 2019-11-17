@@ -72,7 +72,7 @@ def get_contacts():
     response = []
     contacts = db.session.query(Contact).all()
     for contact in contacts:
-        response.append(contact.to_partial_dict())
+        response.append(contact.to_dict())
     return jsonify(response)
 
 
