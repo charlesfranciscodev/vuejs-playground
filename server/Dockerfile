@@ -1,12 +1,9 @@
 # base image
-FROM python:3.7-alpine
+FROM python:slim-buster
 
-# install dependencies
-RUN apk update && \
-    apk add --virtual build-deps gcc python-dev musl-dev && \
-    apk add postgresql-dev && \
-    apk add netcat-openbsd && \
-    apk add musl-dev gcc libffi-dev
+RUN apt-get update
+# install bcrypt dependencies
+RUN apt-get install -y build-essential libffi-dev python-dev
 
 # set working directory
 RUN mkdir -p /usr/src/app

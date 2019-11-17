@@ -98,18 +98,16 @@ class Contact(db.Model):
             return "Invalid token. Please log in again."
 
     def to_dict(self):
-        contact_dict = {
-            "contact_id": self.contact_id,
-            "first_name": self.first_name,
-            "last_name": self.last_name,
-            "username": self.username,
-            "email": self.email,
-            "birthdate": "{}Z".format(self.birthdate.isoformat()),
-            "phone_number": self.phone_number,
-            "avatar_url": self.avatar_url,
-            "description": self.description,
-            "projects": [project.to_partial_dict() for project in self.projects]
-        }
+        contact_dict = self.to_spreadsheet_dict()
+        contact_dict["description"] = self.description
+        contact_dict["projects"] = [project.to_partial_dict() for project in self.projects]
+        return contact_dict
+
+    def to_spreadsheet_dict(self):
+        contact_dict = self.to_partial_dict()
+        contact_dict["email"] = self.email
+        contact_dict["birthdate"] = "{}Z".format(self.birthdate.isoformat())
+        contact_dict["phone_number"] = self.phone_number
         return contact_dict
 
     def to_partial_dict(self):

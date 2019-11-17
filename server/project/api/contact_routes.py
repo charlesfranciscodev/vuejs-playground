@@ -1,9 +1,11 @@
 import bcrypt
 import dateutil.parser
 
+import pandas as pd
+
 from functools import wraps
 
-from flask import Blueprint, jsonify, request, render_template, Response
+from flask import Blueprint, jsonify, request, render_template, Response, send_file
 
 from project.api.models import Contact, Project
 from project import db
@@ -67,12 +69,27 @@ def login():
     return jsonify(response)
 
 
+@contacts_blueprint.route("/download/contacts-pandas")
+def download_contacts():
+    data = []
+    contacts = db.session.query(Contact).all()
+    for contact in contacts:
+        data.append(contact.to_spreadsheet_dict())
+    df = pd.DataFrame(data)
+    file_name = "contacts-pandas.xlsx"
+    absolute_path = "/usr/src/app/project/api/static/spreadsheet/{}".format(file_name)
+    writer = pd.ExcelWriter(absolute_path, engine="xlsxwriter")
+    df.to_excel(writer, index=False)
+    writer.save()
+    return send_file(absolute_path, mimetype="application/vnd.ms-excel", as_attachment=True)
+
+
 @contacts_blueprint.route("/api/contacts")
 def get_contacts():
     response = []
     contacts = db.session.query(Contact).all()
     for contact in contacts:
-        response.append(contact.to_dict())
+        response.append(contact.to_spreadsheet_dict())
     return jsonify(response)
 
 

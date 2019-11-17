@@ -172,7 +172,7 @@ Once done delete the container:
 
 ### Push the image to the registry
 
-`docker push registry.heroku.com/mighty-basin-33270/web:latest`
+`docker push registry.heroku.com/<app-name>/web:latest`
 
 ### Release the image
 
@@ -191,10 +191,7 @@ heroku run python manage.py recreate_db
 heroku run python manage.py seed_db
 ```
 
-Now go to
-
-* https://app-name.herokuapp.com/api/contacts
-* https://app-name.herokuapp.com
+Now go to https://app-name.herokuapp.com/api/contacts
 
 ## References
 * [Test-Driven Development with Python, Flask, and Docker](https://testdriven.io/courses/tdd-flask/)

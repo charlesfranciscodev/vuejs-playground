@@ -6,3 +6,5 @@ python-dateutil
 bcrypt
 pyjwt
 gunicorn
+pandas
+xlsxwriter
