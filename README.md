@@ -64,6 +64,10 @@ The goal of this project is to build a web app with Vue.js, without using a pack
 * with [SheetJS](https://sheetjs.com/)
 * with [pandas](https://pandas.pydata.org/)
 
+## API Restrictions
+* Unfortunately I had some issues with random people on the Internet messing up the data.
+* For that reason, only an admin account can take actions that modify the data such as CREATE, UPDATE or DELETE.
+
 ### Bonus
 * Show a confirmation before deleting a contact.
 * Display a warning message on the contact detail page when a contact is not assigned to any projects.
