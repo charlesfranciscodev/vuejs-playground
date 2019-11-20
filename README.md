@@ -60,11 +60,11 @@ The goal of this project is to build a web app with Vue.js, without using a pack
   * Logo
 * The frontend route path is `/project/{:id}`.
 
-## Download Contacts Data as an Excel Sheet
+### Download Contacts Data as an Excel Sheet
 * with [SheetJS](https://sheetjs.com/)
 * with [pandas](https://pandas.pydata.org/)
 
-## API Restrictions
+### API Restrictions
 * Unfortunately I had some issues with random people on the Internet messing up the data.
 * For that reason, only an admin account can take actions that modify the data such as CREATE, UPDATE or DELETE.
 * Only admins can create/update other admin accounts.
