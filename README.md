@@ -150,7 +150,10 @@ docker-compose -f docker-compose-dev.yml exec database psql -U postgres
 
 ### Log in to the Heroku Container Registry
 
-`heroku container:login`
+```shell
+heroku login
+heroku container:login
+```
 
 ### Provision a new Postgres database with the hobby-dev plan
 
@@ -181,7 +184,7 @@ Once done delete the container:
 
 ### Release the image
 
-`heroku container:release web`
+`heroku container:release web -a <app-name>`
 
 You should now see the app at
 
@@ -192,8 +195,8 @@ where app-name is the name of the Heroku app
 ### Database Setup
 
 ```shell
-heroku run python manage.py recreate_db
-heroku run python manage.py seed_db
+heroku run -a <app-name> python manage.py recreate_db
+heroku run -a <app-name> python manage.py seed_db
 ```
 
 Now go to https://app-name.herokuapp.com/api/contacts
