@@ -43,7 +43,7 @@ The goal of this project is to build a web app with Vue.js, without using a pack
 * Login page with username and password (display the current user in the navbar)
 * Logout from the navbar.
 
-### View Projects Page
+### View "My Projects" Page
 * requires authentication
 * View an image gallery of all projects the current user is assigned to.
 * The frontend route path is `/projects` (link in the navbar).
@@ -67,7 +67,6 @@ The goal of this project is to build a web app with Vue.js, without using a pack
 ### API Restrictions
 * Unfortunately I had some issues with random people on the Internet messing up the data.
 * For that reason, only an admin account can take actions that modify the data such as CREATE, UPDATE or DELETE.
-* Only admins can create/update other admin accounts.
 
 ### Bonus
 * Show a confirmation before deleting a contact.
@@ -76,6 +75,7 @@ The goal of this project is to build a web app with Vue.js, without using a pack
 * General Search Bar on the home page which finds matches for first name, last name or username.
 * Allow the user to login with his email as well.
 * If a user is trying to access a page that requires authentication and he is not allowed to view that page, show an error message.
+* Allow the possibility to create admin accounts from the frontend as well.
 
 ## API Routes
 

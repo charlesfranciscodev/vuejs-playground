@@ -1,3 +1,5 @@
+import { mapGetters } from "../vuex.esm.browser.js";
+
 import ContactFormTemplate from "../templates/contactForm.template.js";
 
 const ContactFormMixin = {
@@ -23,7 +25,7 @@ const ContactFormMixin = {
         "last_name": "Last Name",
         "username": "Username",
         "password": "Password",
-        "birthdate": "Birthdate",
+        "short_birthdate": "Birthdate",
         "phone_number": "Phone Number",
         "avatar_url": "Avatar URL",
         "description": "Description"
@@ -34,6 +36,10 @@ const ContactFormMixin = {
   },
 
   template: ContactFormTemplate,
+
+  computed: {
+    ...mapGetters(["user"])
+  },
 
   methods: {
     validateEmail: function(email) {
@@ -71,7 +77,8 @@ const ContactFormMixin = {
       const options = {
         method: this.httpMethod,
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${this.user.token}`
         },
         body: JSON.stringify(this.contact)
       }

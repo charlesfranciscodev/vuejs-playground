@@ -6,6 +6,7 @@ const ContactCardTemplate = `
     </a>
     <div class="card-body">
       <h4 class="card-title">{{ fullName }}</h4>
+      <p class="card-text"> {{ contact.username }} </p>
       <a :href="editViewPath" class="btn btn-info mb-2 mx-2">
         <i class="fas fa-user-edit"></i> Edit
       </a>

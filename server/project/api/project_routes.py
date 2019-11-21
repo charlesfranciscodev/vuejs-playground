@@ -19,24 +19,24 @@ def get_all_projects():
     return jsonify(response)
 
 
-@projects_blueprint.route("/api/projects")
-@login_required
-def get_projects_for_contact(contact_id):
+@projects_blueprint.route("/api/projects", endpoint="get_projects_for_contact")
+@login_required()
+def get_projects_for_contact(user_id):
     response = []
-    contact = Contact.query.filter_by(contact_id=contact_id).first()
+    contact = Contact.query.filter_by(contact_id=user_id).first()
     for project in contact.projects:
         response.append(project.to_partial_dict())
     return jsonify(response)
 
 
-@projects_blueprint.route("/api/projects/<int:project_id>")
-@login_required
-def get_project(contact_id, project_id):
+@projects_blueprint.route("/api/projects/<int:project_id>", endpoint="get_project")
+@login_required()
+def get_project(user_id, project_id):
     project = Project.query.filter_by(project_id=project_id).first()
     if project is None:
         return Response(status=404)
     for contact in project.contacts:
-        if contact.contact_id == contact_id:
+        if contact.contact_id == user_id:
             return jsonify(project.to_dict())
     response = {
         "message": "You are not assigned to this project."

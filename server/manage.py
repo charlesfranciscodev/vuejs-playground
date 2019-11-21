@@ -55,12 +55,34 @@ def create_contacts():
             contact.last_name = contact_dict["lastName"]
             contact.username = contact_dict["username"]
             contact.hash_password(contact_dict["password"])
-            contact.last_name = contact_dict["lastName"]
             contact.email = contact_dict["email"]
             contact.birthdate = dateutil.parser.isoparse(contact_dict["birthdate"])
             contact.phone_number = contact_dict["phoneNumber"]
             contact.avatar_url = contact_dict["avatarUrl"]
             contact.description = contact_dict["description"]
+            for project_id in contact_dict["projects"]:
+                project = Project.query.filter_by(project_id=project_id).first()
+                contact.projects.append(project)
+            db.session.add(contact)
+    db.session.commit()
+
+
+def create_admins():
+    with open("admin.json") as f:
+        contact_dict = json.load(f)
+        for index, password in enumerate(app.config.get("ADMIN_PASSWORDS")):
+            username = "admin{}".format(index)
+            contact = Contact()
+            contact.first_name = contact_dict["firstName"]
+            contact.last_name = contact_dict["lastName"]
+            contact.username = username
+            contact.hash_password(password)
+            contact.email = "{}@example.com".format(contact.username)
+            contact.birthdate = dateutil.parser.isoparse(contact_dict["birthdate"])
+            contact.phone_number = contact_dict["phoneNumber"]
+            contact.avatar_url = contact_dict["avatarUrl"]
+            contact.description = contact_dict["description"]
+            contact.is_admin = True
             for project_id in contact_dict["projects"]:
                 project = Project.query.filter_by(project_id=project_id).first()
                 contact.projects.append(project)
@@ -77,6 +99,8 @@ def seed_db():
     create_projects()
     print("Creating Contacts")
     create_contacts()
+    print("Creating Admins")
+    create_admins()
     print("Done")
 
 

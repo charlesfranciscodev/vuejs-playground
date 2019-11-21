@@ -19,25 +19,28 @@ contacts_blueprint = Blueprint(
 )
 
 
-def login_required(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        response = {
-            "message": "Please provide a valid auth token."
-        }
-        auth_header = request.headers.get("Authorization")
-        if not auth_header:
-            return jsonify(response), 401
-        auth_token = auth_header.split(" ")[1]
-        value = Contact.decode_auth_token(auth_token)
-        if isinstance(value, str):
-            response["message"] = value
-            return jsonify(response), 401
-        contact = Contact.query.filter_by(contact_id=value).first()
-        if contact is None:
-            return jsonify(response), 401
-        return f(value, *args, **kwargs)
-    return decorated_function
+def login_required(admin_required=False):
+    def decorator(f):
+        @wraps(f)
+        def decorated_function(*args, **kwargs):
+            response = {
+                "message": "Please provide a valid auth token."
+            }
+            auth_header = request.headers.get("Authorization")
+            if not auth_header:
+                return jsonify(response), 401
+            auth_token = auth_header.split(" ")[1]
+            value = Contact.decode_auth_token(auth_token)
+            if isinstance(value, str):
+                response["message"] = value
+                return jsonify(response), 401
+            contact = Contact.query.filter_by(contact_id=value).first()
+            if contact is None or (not contact.is_admin and admin_required):
+                response["message"] = "Admin permissions required"
+                return jsonify(response), 401
+            return f(value, *args, **kwargs)
+        return decorated_function
+    return decorator
 
 
 @contacts_blueprint.route("/")
@@ -93,27 +96,34 @@ def get_contacts():
     return jsonify(response)
 
 
-@contacts_blueprint.route("/api/contacts/<int:contact_id>", methods=["GET", "DELETE"])
+@contacts_blueprint.route("/api/contacts/<int:contact_id>")
 def get_contact(contact_id):
     contact = Contact.query.filter_by(contact_id=contact_id).first()
     if contact is None:
         return Response(status=404)
-    if request.method == "GET":
-        return jsonify(contact.to_dict())
-    elif request.method == "DELETE":
-        db.session.delete(contact)
-        db.session.commit()
-        return Response(status=204)
+    return jsonify(contact.to_dict())
 
 
-@contacts_blueprint.route("/api/contacts", methods=["POST", "PUT"])
-def create_or_update_contact():
+@contacts_blueprint.route("/api/contacts/<int:contact_id>", methods=["DELETE"], endpoint="delete_contact")
+@login_required(admin_required=True)
+def delete_contact(user_id, contact_id):
+    contact = Contact.query.filter_by(contact_id=contact_id).first()
+    if contact is None:
+        return Response(status=404)
+    db.session.delete(contact)
+    db.session.commit()
+    return Response(status=204)
+
+
+@contacts_blueprint.route("/api/contacts", methods=["POST", "PUT"], endpoint="create_or_update_contact")
+@login_required(admin_required=True)
+def create_or_update_contact(user_id):
     response = {}
     request_json = request.get_json()
     contact = None
 
     # Validation
-    keys = ["first_name", "last_name", "username", "email", "birthdate", "phone_number", "avatar_url", "description"]
+    keys = ["first_name", "last_name", "username", "email", "short_birthdate", "phone_number", "avatar_url", "description"]
     if request.method == "POST":
         keys.append("password")
     elif request.method == "PUT":
@@ -150,12 +160,14 @@ def create_or_update_contact():
     contact.last_name = request_json["last_name"]
     contact.username = request_json["username"]
     contact.email = email
-    contact.birthdate = dateutil.parser.parse(request_json["birthdate"])
+    contact.birthdate = dateutil.parser.parse(request_json["short_birthdate"])
     contact.phone_number = request_json["phone_number"]
     contact.avatar_url = request_json["avatar_url"]
     contact.description = request_json["description"]
     if "password" in request_json:
         contact.hash_password(request_json["password"])
+    if "is_admin" in request_json:
+        contact.is_admin = request_json["is_admin"]
     if "projects" in request_json:
         if request.method == "PUT":
             contact.projects = []

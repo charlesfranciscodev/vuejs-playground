@@ -52,6 +52,7 @@ class Contact(db.Model):
     birthdate = db.Column(db.DateTime, nullable=False)
     phone_number = db.Column(db.String(255), nullable=False)
     avatar_url = db.Column(db.Text, nullable=False)
+    is_admin = db.Column(db.Boolean, nullable=False, default=False)
     description = db.Column(db.Text, nullable=False)
     projects = db.relationship(
         "Project",
@@ -107,6 +108,7 @@ class Contact(db.Model):
         contact_dict = self.to_partial_dict()
         contact_dict["email"] = self.email
         contact_dict["birthdate"] = "{}Z".format(self.birthdate.isoformat())
+        contact_dict["short_birthdate"] = self.birthdate.isoformat().split(".")[0]
         contact_dict["phone_number"] = self.phone_number
         return contact_dict
 
@@ -117,6 +119,7 @@ class Contact(db.Model):
             "last_name": self.last_name,
             "username": self.username,
             "avatar_url": self.avatar_url,
+            "is_admin": self.is_admin
         }
         return contact_dict
 
