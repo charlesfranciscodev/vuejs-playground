@@ -1,4 +1,4 @@
-import { ProjectCardTemplate } from "../templates/projectCard.template.js";
+import ProjectCardTemplate from "../templates/projectCard.template.js";
 
 const ProjectCard = {
   props: ["project"],

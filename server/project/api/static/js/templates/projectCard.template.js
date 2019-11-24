@@ -11,4 +11,4 @@ const ProjectCardTemplate = `
 </div>
 `;
 
-export { ProjectCardTemplate }
+export default ProjectCardTemplate;

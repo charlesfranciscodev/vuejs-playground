@@ -36,4 +36,4 @@ const ProjectDetailTemplate = `
 </div>
 `;
 
-export { ProjectDetailTemplate }
+export default ProjectDetailTemplate;

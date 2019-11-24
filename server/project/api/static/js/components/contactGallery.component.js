@@ -1,4 +1,4 @@
-import { ContactGalleryTemplate } from "../templates/contactGallery.template.js";
+import ContactGalleryTemplate from "../templates/contactGallery.template.js";
 import ContactCard from "./contactCard.component.js";
 
 const ContactGallery = {

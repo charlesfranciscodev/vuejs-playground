@@ -4,6 +4,18 @@ Contact List Web App with Vue.js, Bootstrap, Flask and SQLAlchemy
 
 The goal of this project is to build a web app with Vue.js, without using a package manager (like npm), a transpiler (like Babel) or module bundler (like webpack).
 
+## Why Vue.js?
+* stateful components: automatic UI updates when state changes, without any DOM manipulation (unlike jQuery.js or Jinja templates). Because of this, it is less error prone.
+* low dependency on npm/Babel/webpack (unlike React.js)
+* easier to learn then React.js/Angular.js.
+
+## Why I try to avoid using npm/Babel/webpack:
+* It reduces the learning curve required to start using Vue.js.
+* Because JavaScript lacks a standard library, a project with npm usually has a lot of dependencies. This increases the project's size and complexity. But if do not use npm, how do we install additional libraries? They can simply be downloaded from a CDN and imported using HTML `<script>` tags. For example, in this project I used Font Awesome and SheetJS with this method. See this [article](https://hackernoon.com/whats-really-wrong-with-node-modules-and-why-this-is-your-fault-8ac9fa893823) for more info.
+* The second potential problem is that there is no direct Internet connection at my company,  which any package manager needs to install packages.
+* Babel is useful for converting ES6 JavaScript into backwards compatible code. But, in my case this is not needed as the web browsers at my company all support ES6 (lucky me).
+* webpack can potentially require a lot of configuration and is not beginner friendly.
+
 ## Features
 
 ### Home Page
@@ -99,6 +111,7 @@ To make the frontend app work, download vue, vue-router and vuex (ES Module Brow
 * https://cdnjs.com/libraries/vue
 * https://cdnjs.com/libraries/vue-router
 * https://cdnjs.com/libraries/vuex
+* 
 
 Then, copy these files to the folder `./server/project/api/static/js/`
 

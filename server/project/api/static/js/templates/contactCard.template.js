@@ -18,4 +18,4 @@ const ContactCardTemplate = `
 </div>
 `;
 
-export { ContactCardTemplate }
+export default ContactCardTemplate;

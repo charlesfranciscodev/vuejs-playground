@@ -1,5 +1,5 @@
 import ContactInfoMixin from "../mixins/contactInfo.mixin.js";
-import { ContactCardTemplate } from "../templates/contactCard.template.js";
+import ContactCardTemplate from "../templates/contactCard.template.js";
 import DeleteContactMixin from "../mixins/deleteContact.mixin.js";
 
 const ConctactCard = {

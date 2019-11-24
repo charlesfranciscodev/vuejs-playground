@@ -1,6 +1,6 @@
 import { mapGetters } from "../vuex.esm.browser.js";
 
-import { ProjectGalleryTemplate } from "../templates/projectGallery.template.js";
+import ProjectGalleryTemplate from "../templates/projectGallery.template.js";
 import ProjectCard from "./projectCard.component.js";
 
 const ProjectGallery = {

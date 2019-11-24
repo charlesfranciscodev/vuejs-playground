@@ -1,6 +1,6 @@
 import { mapGetters } from "../vuex.esm.browser.js";
 
-import { ProjectDetailTemplate } from "../templates/projectDetail.template.js";
+import ProjectDetailTemplate from "../templates/projectDetail.template.js";
 
 const ProjectDetail = {
   data: function() {

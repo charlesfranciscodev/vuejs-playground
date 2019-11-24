@@ -21,4 +21,4 @@ const ContactGalleryTemplate = `
 </div>
 `;
 
-export { ContactGalleryTemplate }
+export default ContactGalleryTemplate;

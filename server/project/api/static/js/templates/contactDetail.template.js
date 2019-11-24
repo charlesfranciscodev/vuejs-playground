@@ -59,4 +59,4 @@ const ContactDetailTemplate = `
 </div>
 `;
 
-export { ContactDetailTemplate }
+export default ContactDetailTemplate;

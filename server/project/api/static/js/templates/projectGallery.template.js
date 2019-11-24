@@ -9,4 +9,4 @@ const ProjectGalleryTemplate = `
 </div>
 `;
 
-export { ProjectGalleryTemplate }
+export default ProjectGalleryTemplate;
