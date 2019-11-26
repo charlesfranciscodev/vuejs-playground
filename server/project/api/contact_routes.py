@@ -42,7 +42,7 @@ def login_required(admin_required=False):
         return decorated_function
     return decorator
 
-# Flask Templates
+# Templates
 @contacts_blueprint.route("/")
 def index():
     """Home Page"""
