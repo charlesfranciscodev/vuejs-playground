@@ -42,9 +42,10 @@ def login_required(admin_required=False):
         return decorated_function
     return decorator
 
-
+# Flask Templates
 @contacts_blueprint.route("/")
 def index():
+    """Home Page"""
     return render_template("index.html")
 
 
@@ -53,7 +54,11 @@ def example():
     """Example route to link to from the Vue.js app."""
     return render_template("example.html")
 
+def page_not_found(e):
+    return render_template("404.html"), 404
 
+
+# API
 @contacts_blueprint.route("/login", methods=["POST"])
 def login():
     response = {}

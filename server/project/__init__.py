@@ -22,11 +22,14 @@ def create_app(script_info=None):
     db.init_app(app)
     cors.init_app(app)
 
-    # register blueprints
-    from project.api.contact_routes import contacts_blueprint
+    # import here to prevent circular import
+    from project.api.contact_routes import contacts_blueprint, page_not_found
     from project.api.project_routes import projects_blueprint
+
+    # register blueprints
     app.register_blueprint(contacts_blueprint)
     app.register_blueprint(projects_blueprint)
+    app.register_error_handler(404, page_not_found)
 
     # shell context for flask cli
     @app.shell_context_processor

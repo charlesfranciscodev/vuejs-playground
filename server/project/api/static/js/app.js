@@ -16,6 +16,7 @@ import ContactDetail from "./components/contactDetail.component.js";
 import LoginForm from "./components/loginForm.component.js";
 import ProjectGallery from "./components/projectGallery.component.js";
 import ProjectDetail from "./components/projectDetail.component.js";
+import NotFound from "./components/notFound.component.js";
 
 Vue.use(VueRouter);
 
@@ -71,6 +72,12 @@ const router = new VueRouter({
       component: ProjectDetail,
       name: "project"
     },
+    {
+      // will match everything
+      path: "*",
+      component: NotFound,
+      name: "notFound"
+    }
   ]
 });
 
