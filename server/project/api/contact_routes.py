@@ -1,3 +1,7 @@
+import sys
+import datetime
+import traceback
+
 import bcrypt
 import dateutil.parser
 
@@ -5,7 +9,10 @@ import pandas as pd
 
 from functools import wraps
 
-from flask import Blueprint, jsonify, request, render_template, Response, send_file
+from flask import (
+    Blueprint, jsonify, request, render_template, Response, send_file,
+    session, redirect, url_for
+)
 
 from project.api.models import Contact, Project
 from project import db
@@ -19,6 +26,7 @@ contacts_blueprint = Blueprint(
 )
 
 
+## Decorators
 def login_required(admin_required=False):
     def decorator(f):
         @wraps(f)
@@ -42,24 +50,62 @@ def login_required(admin_required=False):
         return decorated_function
     return decorator
 
+
+def custom_error_handler(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        try:
+            return f(*args, **kwargs)
+        except Exception as e:
+            date_time = "{}\n".format(
+                datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            )
+            exception_type, exception, stack_trace = sys.exc_info()
+            lines = [date_time] + traceback.format_tb(stack_trace)
+            session["error_message"] = "{}: {}".format(exception_type, exception)
+            session["stack_trace"] = lines
+            return redirect(url_for("contacts.error"))
+    return decorated_function
+
+
 # Templates
 @contacts_blueprint.route("/")
+@custom_error_handler
 def index():
     """Home Page"""
     return render_template("index.html")
 
 
 @contacts_blueprint.route("/example")
+@custom_error_handler
 def example():
     """Example route to link to from the Vue.js app."""
     return render_template("example.html")
+
+
+@contacts_blueprint.route("/error-example")
+@custom_error_handler
+def error_example():
+    """Error example route which fails intentionally."""
+    return render_template("fail.html")
+
+
+@contacts_blueprint.route("/error")
+def error():
+    return render_template(
+        "error.html",
+        error_message=session["error_message"],
+        stack_trace=session["stack_trace"]
+    )
+
 
 def page_not_found(e):
     return render_template("404.html"), 404
 
 
-# API
+# REST API
 @contacts_blueprint.route("/login", methods=["POST"])
+@custom_error_handler
 def login():
     response = {}
     request_json = request.get_json()
@@ -84,6 +130,7 @@ def login():
 
 
 @contacts_blueprint.route("/download/contacts-pandas")
+@custom_error_handler
 def download_contacts():
     data = []
     contacts = db.session.query(Contact).all()
@@ -99,6 +146,7 @@ def download_contacts():
 
 
 @contacts_blueprint.route("/api/contacts")
+@custom_error_handler
 def get_contacts():
     response = []
     contacts = db.session.query(Contact).all()
@@ -108,6 +156,7 @@ def get_contacts():
 
 
 @contacts_blueprint.route("/api/contacts/<int:contact_id>")
+@custom_error_handler
 def get_contact(contact_id):
     contact = Contact.query.filter_by(contact_id=contact_id).first()
     if contact is None:
@@ -117,6 +166,7 @@ def get_contact(contact_id):
 
 @contacts_blueprint.route("/api/contacts/<int:contact_id>", methods=["DELETE"], endpoint="delete_contact")
 @login_required(admin_required=True)
+@custom_error_handler
 def delete_contact(user_id, contact_id):
     contact = Contact.query.filter_by(contact_id=contact_id).first()
     if contact is None:
@@ -128,6 +178,7 @@ def delete_contact(user_id, contact_id):
 
 @contacts_blueprint.route("/api/contacts", methods=["POST", "PUT"], endpoint="create_or_update_contact")
 @login_required(admin_required=True)
+@custom_error_handler
 def create_or_update_contact(user_id):
     response = {}
     request_json = request.get_json()
@@ -198,6 +249,7 @@ def create_or_update_contact(user_id):
 
 
 @contacts_blueprint.route("/api/test")
+@custom_error_handler
 def test():
     response = {
         "message": "Yo mamma so fat even penguins are jealous of the way she waddles."

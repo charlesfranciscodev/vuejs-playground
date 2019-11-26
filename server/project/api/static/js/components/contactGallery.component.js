@@ -53,6 +53,9 @@ const ContactGallery = {
     const url = "/api/contacts";
     fetch(url)
     .then(function(response) {
+      if (response.redirected) {
+        window.location.replace(response.url);
+      }
       if (response.ok) {
         return Promise.resolve(response);
       } else {
