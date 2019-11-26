@@ -2,6 +2,8 @@ import { mapGetters } from "../vuex.esm.browser.js";
 
 import ContactFormTemplate from "../templates/contactForm.template.js";
 
+import handleResponse from "../util/fetch.util.js";
+
 const ContactFormMixin = {
   props: ["heading", "buttonText", "httpMethod"],
 
@@ -66,7 +68,7 @@ const ContactFormMixin = {
       return valid;
     },
 
-    createOrUpdateContact: function(event) {
+    createOrUpdateContact: function() {
       if (!this.validateForm()) {
         return;
       }
@@ -84,6 +86,9 @@ const ContactFormMixin = {
       }
       fetch(url, options)
       .then(function(response) {
+        if (response.redirected) {
+          window.location.replace(response.url);
+        }
         if (response.ok) {
           return Promise.resolve(response);
         } else {
@@ -105,13 +110,8 @@ const ContactFormMixin = {
   created() {
     const url = "/api/all-projects";
     fetch(url)
-    .then(function(response) {
-      if (response.ok) {
-        return Promise.resolve(response);
-      } else {
-        return Promise.reject(new Error(response.statusText));
-      }
-    }).then(response => response.json())
+    .then(handleResponse)
+    .then(response => response.json())
     .then(data => this.projects = data)
     .catch(error => console.log(error));
   }

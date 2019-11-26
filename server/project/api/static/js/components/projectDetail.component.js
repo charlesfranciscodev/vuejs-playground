@@ -2,6 +2,8 @@ import { mapGetters } from "../vuex.esm.browser.js";
 
 import ProjectDetailTemplate from "../templates/projectDetail.template.js";
 
+import handleResponse from "../util/fetch.util.js";
+
 const ProjectDetail = {
   data: function() {
     return {
@@ -27,13 +29,8 @@ const ProjectDetail = {
       }
     }
     fetch(url, options)
-    .then(function(response) {
-      if (response.ok) {
-        return Promise.resolve(response);
-      } else {
-        return Promise.reject(new Error(response.statusText));
-      }
-    }).then(response => response.json())
+    .then(handleResponse)
+    .then(response => response.json())
     .then(data => this.project = data)
     .catch(error => console.log(error));
   }

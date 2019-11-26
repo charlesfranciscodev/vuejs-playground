@@ -3,6 +3,8 @@ import { mapGetters } from "../vuex.esm.browser.js";
 import ProjectGalleryTemplate from "../templates/projectGallery.template.js";
 import ProjectCard from "./projectCard.component.js";
 
+import handleResponse from "../util/fetch.util.js";
+
 const ProjectGallery = {
   data: function() {
     return {
@@ -26,13 +28,8 @@ const ProjectGallery = {
       }
     }
     fetch(url, options)
-    .then(function(response) {
-      if (response.ok) {
-        return Promise.resolve(response);
-      } else {
-        return Promise.reject(new Error(response.statusText));
-      }
-    }).then(response => response.json())
+    .then(handleResponse)
+    .then(response => response.json())
     .then(data => this.projects = data)
     .catch(error => console.log(error));
   }

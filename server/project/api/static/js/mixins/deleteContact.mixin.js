@@ -1,5 +1,7 @@
 import { mapGetters } from "../vuex.esm.browser.js";
 
+import handleResponse from "../util/fetch.util.js";
+
 const DeleteContactMixin = {
   computed: mapGetters(["user"]),
 
@@ -15,13 +17,8 @@ const DeleteContactMixin = {
       };
       
       fetch(url, options)
-      .then(function(response) {
-        if (response.ok) {
-          return Promise.resolve(response);
-        } else {
-          return Promise.reject(new Error(response.statusText));
-        }
-      }).then(function(response) {
+      .then(handleResponse)
+      .then(function() {
         if (that.$route.name === "home") {
           // emit event to delete the contact from the state
           that.$emit("del-contact");
