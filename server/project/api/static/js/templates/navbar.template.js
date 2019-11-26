@@ -1,6 +1,6 @@
 const NavbarTemplate = `
 <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
-  <a class="navbar-brand mr-0" href="">Contact List</a>
+  <a class="navbar-brand mr-0" href="/#/">Contact List</a>
 
   <button v-on:click="toggleMenu" class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#navbarLinks" aria-controls="navbarLinks">
     <span class="navbar-toggler-icon"></span>
@@ -35,6 +35,12 @@ const NavbarTemplate = `
       <li class="nav-item">
         <a class="nav-link" href="https://github.com/charlesfranciscodev/contact-list" target="_blank">
           <i class="fab fa-github"></i> GitHub
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/example">
+          <i class="fas fa-globe"></i> Example
         </a>
       </li>
     </ul>

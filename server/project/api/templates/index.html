@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Contact List</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact List</title>
 
-  <link rel="shortcut icon" href="{{ url_for('.static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('.static', filename='images/favicon.ico') }}" type="image/x-icon">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/united/bootstrap.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/united/bootstrap.min.css">
 
-  <link rel="stylesheet" href="{{ url_for('.static', filename='css/style.css') }}">
-</head>
-<body>
-  <div id="app"></div>
+    <link rel="stylesheet" href="{{ url_for('.static', filename='css/style.css') }}">
+  </head>
+  
+  <body>
+    <div id="app"></div>
 
-  <!-- Font Awesome Kit -->
-  <script src="https://kit.fontawesome.com/3003e90867.js" crossorigin="anonymous"></script>
+    <!-- Font Awesome Kit -->
+    <script src="https://kit.fontawesome.com/3003e90867.js" crossorigin="anonymous"></script>
 
-  <!-- SheetJS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.1/xlsx.full.min.js"></script>
+    <!-- SheetJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.1/xlsx.full.min.js"></script>
 
-  <!-- Moment.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
-  <script type="module" src="{{ url_for('.static', filename='js/app.js') }}""></script>
-</body>
+    <script type="module" src="{{ url_for('.static', filename='js/app.js') }}""></script>
+  </body>
 </html>

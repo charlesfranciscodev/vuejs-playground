@@ -48,6 +48,12 @@ def index():
     return render_template("index.html")
 
 
+@contacts_blueprint.route("/example")
+def example():
+    """Example route to link to from the Vue.js app."""
+    return render_template("example.html")
+
+
 @contacts_blueprint.route("/login", methods=["POST"])
 def login():
     response = {}
