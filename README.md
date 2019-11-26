@@ -226,3 +226,4 @@ Now go to https://app-name.herokuapp.com/api/contacts
 * [Random User Generator](https://randomuser.me/)
 * [Diverse UI](https://diverseui.com/)
 * [PlaceIMG](https://placeimg.com/)
+* [Lorem Picsum](https://picsum.photos/)
