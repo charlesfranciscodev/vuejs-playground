@@ -218,6 +218,7 @@ Now go to https://app-name.herokuapp.com/api/contacts
 * [Test-Driven Development with Python, Flask, and Docker](https://testdriven.io/courses/tdd-flask/)
 * [Vue.js](https://vuejs.org/)
 * [New in Vue: ES Module Browser Build](https://vuejsdevelopers.com/2019/02/04/vue-es-module-browser-build/)
+* [Use Vue to create a SPA without any Node modules](https://dev.to/arswaw/create-a-lightweight-componentized-spa-without-node-569j)
 * [Bootstrap](https://getbootstrap.com/)
 * [Flask](https://palletsprojects.com/p/flask/)
 * [SQLAlchemy](https://www.sqlalchemy.org/)
