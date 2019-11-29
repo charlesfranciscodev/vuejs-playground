@@ -6,7 +6,7 @@ const ProjectCard = {
   template: ProjectCardTemplate,
   
   computed: {
-    detailViewPath: function() {
+    detailViewPath() {
       return `/#/project/${this.project["project_id"]}`;
     }
   }

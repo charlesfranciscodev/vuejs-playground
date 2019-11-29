@@ -5,7 +5,7 @@ import ProjectDetailTemplate from "../templates/projectDetail.template.js";
 import handleResponse from "../util/fetch.util.js";
 
 const ProjectDetail = {
-  data: function() {
+  data() {
     return {
       project: {}
     }
@@ -14,13 +14,21 @@ const ProjectDetail = {
   computed: {
     ...mapGetters(["user"]),
 
-    emptyProject: function() {
+    /**
+     * Whether or not the project is an empty object.
+     * @returns {Boolean}
+     */
+    emptyProject() {
       return Object.keys(this.project).length === 0;
     }
   },
 
   template: ProjectDetailTemplate,
 
+  /**
+   * Send a web API request to get the project information.
+   * @returns {void}
+   */
   created() {
     const url = `/api/projects/${this.$route.params.id}`;
     const options = {
@@ -28,6 +36,7 @@ const ProjectDetail = {
         "Authorization": `Bearer ${this.user.token}`
       }
     }
+    
     fetch(url, options)
     .then(handleResponse)
     .then(response => response.json())

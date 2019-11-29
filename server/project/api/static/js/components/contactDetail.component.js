@@ -7,7 +7,7 @@ import ContactDetailTemplate from "../templates/contactDetail.template.js";
 const ContactDetail = {
   mixins: [ContactInfoMixin, GetContactMixin, DeleteContactMixin],
 
-  data: function() {
+  data() {
     return {
       contact: {}
     }
@@ -16,7 +16,11 @@ const ContactDetail = {
   template: ContactDetailTemplate,
 
   computed: {
-    ageInYears: function() {
+    /**
+     * Calculate the age in years of the contact.
+     * @returns {Number} age
+     */
+    ageInYears() {
       /*
       // with Vanilla JS
       let birthdate = new Date(this.contact["birthdate"]);

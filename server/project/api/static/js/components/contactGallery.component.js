@@ -3,7 +3,7 @@ import ContactCard from "./contactCard.component.js";
 import handleResponse from "../util/fetch.util.js";
 
 const ContactGallery = {
-  data: function() {
+  data() {
     return {
       contacts: []
     }
@@ -16,11 +16,20 @@ const ContactGallery = {
   },
 
   methods: {
-    delContact: function(contactId) {
+    /**
+     * Delete the contact from the component state.
+     * @param {Number} contactId 
+     * @returns {void}
+     */
+    delContact(contactId) {
       this.contacts = this.contacts.filter(contact => contact.contact_id !== contactId);
     },
 
-    convertContacts: function() {
+    /**
+     * Convert contacts data to a spreadsheet friendly format.
+     * @returns {Array<Array<*>>}
+     */
+    convertContacts() {
       let data = [["contact_id", "first_name", "last_name", "username", "email", "birthdate", "phone_number", "avatar_url"]];
       this.contacts.forEach(contact => {
         let row = [
@@ -38,7 +47,10 @@ const ContactGallery = {
       return data;
     },
 
-    downloadWithSheetJS: function() {
+    /**
+     * Download contacts data as an Excel sheet.
+     */
+    downloadWithSheetJS() {
       let fileName = "contacts-sheet-js.xlsx";
       let data = this.convertContacts();
       let wb = XLSX.utils.book_new();
@@ -50,6 +62,10 @@ const ContactGallery = {
     }
   },
 
+  /**
+   * Send a web API request to get information about all the contacts.
+   * @returns {void}
+   */
   created() {
     const url = "/api/contacts";
     fetch(url)

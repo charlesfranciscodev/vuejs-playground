@@ -2,7 +2,7 @@ import ContactInfoMixin from "../mixins/contactInfo.mixin.js";
 import ContactCardTemplate from "../templates/contactCard.template.js";
 import DeleteContactMixin from "../mixins/deleteContact.mixin.js";
 
-const ConctactCard = {
+const ContactCard = {
   mixins: [ContactInfoMixin, DeleteContactMixin],
 
   props: ["contact"],
@@ -10,10 +10,10 @@ const ConctactCard = {
   template: ContactCardTemplate,
   
   computed: {
-    detailViewPath: function() {
+    detailViewPath() {
       return `/#/view/${this.contact["contact_id"]}`;
     }
   }
 };
 
-export default ConctactCard;
+export default ContactCard;

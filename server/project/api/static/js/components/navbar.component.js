@@ -3,7 +3,7 @@ import { mapActions, mapGetters } from "../vuex.esm.browser.js";
 import NavbarTemplate from "../templates/navbar.template.js";
 
 const Navbar = {
-  data: function() {
+  data() {
     return {
       collapse: true
     }
@@ -12,11 +12,11 @@ const Navbar = {
   methods: {
     ...mapActions(["logout"]),
 
-    toggleMenu: function (event) {
+    toggleMenu() {
       this.collapse = !this.collapse;
     },
 
-    logoutButtonClick: function(event) {
+    logoutButtonClick() {
       this.logout();
       this.$router.push({"name": "home"});
     }
@@ -25,14 +25,14 @@ const Navbar = {
   computed: {
     ...mapGetters(["user"]),
 
-    classProperty: function () {
+    classProperty() {
       return {
         "collapse": this.collapse,
         "in": !this.collapse
       }
     },
 
-    loggedIn: function() {
+    loggedIn() {
       return Object.keys(this.user).length !== 0;
     }
   },

@@ -222,6 +222,7 @@ Now go to https://app-name.herokuapp.com/api/contacts
 * [Bootstrap](https://getbootstrap.com/)
 * [Flask](https://palletsprojects.com/p/flask/)
 * [SQLAlchemy](https://www.sqlalchemy.org/)
+* [JSDoc](https://jsdoc.app/)
 
 ## Data
 * [Random User Generator](https://randomuser.me/)

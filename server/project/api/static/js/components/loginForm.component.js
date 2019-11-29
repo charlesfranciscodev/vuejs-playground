@@ -3,7 +3,7 @@ import { mapActions, mapGetters } from "../vuex.esm.browser.js";
 import LoginFormTemplate from "../templates/loginForm.template.js";
 
 const LoginForm = {
-  data: function() {
+  data() {
     return {
       formData: {
         "username": "",
@@ -19,12 +19,9 @@ const LoginForm = {
   methods: {
     ...mapActions(["login"]),
 
-    loginButtonClick: function(event) {
+    loginButtonClick() {
       this.login(this.formData)
-      .then(() => {
-        // go back to the previous page
-        this.$router.go(-1);
-      })
+      .then(() => this.$router.go(-1))
       .catch(() => console.log("login error"));
     }
   },

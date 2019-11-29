@@ -6,8 +6,13 @@ const DeleteContactMixin = {
   computed: mapGetters(["user"]),
 
   methods: {
+    /**
+     * Send a web API request to delete a contact.
+     * @param {Number} contactId - id of the contact to delete
+     * @returns {void}
+     */
     deleteContact: function(contactId) {
-      let that = this;
+      let that = this; // this points to the Vue instance
       const url = `/api/contacts/${contactId}`;
       const options = {
         method: "DELETE",

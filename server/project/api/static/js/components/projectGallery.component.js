@@ -6,7 +6,7 @@ import ProjectCard from "./projectCard.component.js";
 import handleResponse from "../util/fetch.util.js";
 
 const ProjectGallery = {
-  data: function() {
+  data() {
     return {
       projects: []
     }
@@ -20,6 +20,10 @@ const ProjectGallery = {
     "project-card": ProjectCard
   },
 
+  /**
+   * Send a web API request to get information about all the projects.
+   * @returns {void}
+   */
   created() {
     const url = "/api/projects";
     const options = {
@@ -27,6 +31,7 @@ const ProjectGallery = {
         "Authorization": `Bearer ${this.user.token}`
       }
     }
+    
     fetch(url, options)
     .then(handleResponse)
     .then(response => response.json())

@@ -7,7 +7,7 @@ import handleResponse from "../util/fetch.util.js";
 const ContactFormMixin = {
   props: ["heading", "buttonText", "httpMethod"],
 
-  data: function() {
+  data() {
     return {
       contact: {
         "contact_id": this.$route.params.id,
@@ -44,12 +44,21 @@ const ContactFormMixin = {
   },
 
   methods: {
-    validateEmail: function(email) {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(email);
+    /**
+     * Validate whether the email address is valid or not.
+     * @param {String} email 
+     * @returns {Boolean}
+     */
+    validateEmail(email) {
+      const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return regex.test(email);
     },
 
-    validateForm: function() {
+    /**
+     * Validate whether the form data is valid or not. 
+     * @returns {Boolean}
+     */
+    validateForm() {
       let valid = true;
       this.errors = [];
 
@@ -68,13 +77,15 @@ const ContactFormMixin = {
       return valid;
     },
 
-    createOrUpdateContact: function() {
+    /**
+     * Send a web API request to create or update a contact.
+     * @returns {void}
+     */
+    createOrUpdateContact() {
       if (!this.validateForm()) {
         return;
       }
-
       let that = this;
-
       const url = `/api/contacts`;
       const options = {
         method: this.httpMethod,
@@ -84,6 +95,7 @@ const ContactFormMixin = {
         },
         body: JSON.stringify(this.contact)
       }
+
       fetch(url, options)
       .then(function(response) {
         if (response.redirected) {
@@ -98,15 +110,15 @@ const ContactFormMixin = {
           });
         }
       }).then(response => response.json())
-      .then(function(responseJson) {
-        that.$router.push(`/view/${responseJson.contact_id}`);
-      })
-      .catch(function(error){
-        that.errors.push(error);
-      });
+      .then((data) => that.$router.push(`/view/${data.contact_id}`))
+      .catch((error) => that.errors.push(error));
     }
   },
 
+  /**
+   * Send a web API request to get information about all projects.
+   * @returns {void}
+   */
   created() {
     const url = "/api/all-projects";
     fetch(url)

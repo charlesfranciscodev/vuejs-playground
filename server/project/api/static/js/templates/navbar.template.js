@@ -45,9 +45,9 @@ const NavbarTemplate = `
       </li>
     </ul>
 
-    <span v-if="loggedIn" class="navbar-text">
+    <div v-if="loggedIn" class="navbar-text d-block text-center">
       Hello {{ user.username }}
-    </span>
+    </div>
 
     <ul class="navbar-nav text-center">
       <li v-if="!loggedIn" class="nav-item">
