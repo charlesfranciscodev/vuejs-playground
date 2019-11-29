@@ -1,10 +1,12 @@
 /**
  * Utility function for web API requests with fetch.
- * @param {Promise<Response>} response
- * @returns {void|Promise<Response>|Promise<String>}
+ *
  * Redirect to a new url in the case of an unintentional server error.
- * Returns a new promise when the request is successful.
- * Returns a rejected promise when the request failed.
+ * Returns a new promise with the response when the request is successful.
+ * Returns a rejected promise with the error when the request failed.
+ *
+ * @param {Response} response
+ * @returns {void|Promise<Response>|Promise<Error>}
  */
 function handleResponse(response) {
   if (response.redirected) {
