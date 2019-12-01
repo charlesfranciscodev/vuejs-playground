@@ -22,7 +22,7 @@ const LoginForm = {
     loginButtonClick() {
       this.login(this.formData)
       .then(() => this.$router.go(-1))
-      .catch(() => console.log("login error"));
+      .catch(() => console.error("login error"));
     }
   },
 }

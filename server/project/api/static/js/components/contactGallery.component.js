@@ -67,12 +67,11 @@ const ContactGallery = {
    * @returns {void}
    */
   created() {
-    const url = "/api/contacts";
-    fetch(url)
+    fetch("/api/contacts")
     .then(handleResponse)
     .then(response => response.json())
     .then(data => this.contacts = data)
-    .catch(error => console.log(error));
+    .catch(error => console.error(error));
   }
 };
 

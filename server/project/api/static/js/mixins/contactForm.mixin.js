@@ -86,8 +86,8 @@ const ContactFormMixin = {
         return;
       }
       let that = this;
-      const url = `/api/contacts`;
-      const options = {
+      let url = `/api/contacts`;
+      let options = {
         method: this.httpMethod,
         headers: {
           "Content-Type": "application/json",
@@ -120,12 +120,11 @@ const ContactFormMixin = {
    * @returns {void}
    */
   created() {
-    const url = "/api/all-projects";
-    fetch(url)
+    fetch("/api/all-projects")
     .then(handleResponse)
     .then(response => response.json())
     .then(data => this.projects = data)
-    .catch(error => console.log(error));
+    .catch(error => console.error(error));
   }
 }
 

@@ -25,18 +25,17 @@ const ProjectGallery = {
    * @returns {void}
    */
   created() {
-    const url = "/api/projects";
-    const options = {
+    let url = "/api/projects";
+    let options = {
       headers: {
         "Authorization": `Bearer ${this.user.token}`
       }
     }
-    
     fetch(url, options)
     .then(handleResponse)
     .then(response => response.json())
     .then(data => this.projects = data)
-    .catch(error => console.log(error));
+    .catch(error => console.error(error));
   }
 };
 

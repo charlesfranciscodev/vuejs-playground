@@ -1,5 +1,5 @@
-import Vue from "./vue.esm.browser.js";
-import VueRouter from "./vue-router.esm.browser.js";
+import Vue from "./vue.esm.browser.min.js";
+import VueRouter from "./vue-router.esm.browser.min.js";
 
 import store from "./store/index.js";
 

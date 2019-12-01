@@ -6,12 +6,12 @@ const GetContactMixin = {
    * @returns {void}
    */
   created() {
-    const url = `/api/contacts/${this.$route.params.id}`;
+    let url = `/api/contacts/${this.$route.params.id}`;
     fetch(url)
     .then(handleResponse)
     .then(response => response.json())
     .then(data => this.contact = data)
-    .catch(error => console.log(error));
+    .catch(error => console.error(error));
   }
 };
 

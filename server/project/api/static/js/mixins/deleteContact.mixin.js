@@ -13,8 +13,8 @@ const DeleteContactMixin = {
      */
     deleteContact: function(contactId) {
       let that = this; // this points to the Vue instance
-      const url = `/api/contacts/${contactId}`;
-      const options = {
+      let url = `/api/contacts/${contactId}`;
+      let options = {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${this.user.token}`

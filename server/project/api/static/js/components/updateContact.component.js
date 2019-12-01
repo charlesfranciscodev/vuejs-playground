@@ -1,4 +1,4 @@
-import Vue from "../vue.esm.browser.js";
+import Vue from "../vue.esm.browser.min.js";
 
 import ContactFormMixin from "../mixins/contactForm.mixin.js";
 import GetContactMixin from "../mixins/getContact.mixin.js";

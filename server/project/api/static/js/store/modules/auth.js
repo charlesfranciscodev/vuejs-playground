@@ -27,7 +27,7 @@ const actions = {
         reject();
       } else {
         // API call
-        const options = {
+        let options = {
           method: "POST",
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify(formData)

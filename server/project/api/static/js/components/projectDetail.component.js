@@ -30,18 +30,17 @@ const ProjectDetail = {
    * @returns {void}
    */
   created() {
-    const url = `/api/projects/${this.$route.params.id}`;
-    const options = {
+    let url = `/api/projects/${this.$route.params.id}`;
+    let options = {
       headers: {
         "Authorization": `Bearer ${this.user.token}`
       }
-    }
-    
+    };
     fetch(url, options)
     .then(handleResponse)
     .then(response => response.json())
     .then(data => this.project = data)
-    .catch(error => console.log(error));
+    .catch(error => console.error(error));
   }
 };
 
