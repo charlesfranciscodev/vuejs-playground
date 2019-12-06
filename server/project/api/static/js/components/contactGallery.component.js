@@ -26,22 +26,17 @@ const ContactGallery = {
     },
 
     /**
-     * Convert contacts data to a spreadsheet friendly format.
+     * Convert contacts data to a SheetJS friendly format.
      * @returns {Array<Array<*>>}
      */
     convertContacts() {
-      let data = [["contact_id", "first_name", "last_name", "username", "email", "birthdate", "phone_number", "avatar_url"]];
+      const KEYS = ["contact_id", "first_name", "last_name", "username", "email", "birthdate", "short_birthdate", "phone_number", "avatar_url", "is_admin"];
+      let data = [KEYS];
       this.contacts.forEach(contact => {
-        let row = [
-          contact["contact_id"],
-          contact["first_name"],
-          contact["last_name"],
-          contact["username"],
-          contact["email"],
-          contact["birthdate"],
-          contact["phone_number"],
-          contact["avatar_url"]
-        ];
+        let row = [];
+        KEYS.forEach(key => {
+          row.push(contact[key]);
+        });
         data.push(row);
       });
       return data;

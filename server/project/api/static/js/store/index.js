@@ -1,5 +1,5 @@
-import Vue from "../vue.esm.browser.min.js";
-import Vuex from "../vuex.esm.browser.min.js";
+import Vue from "../vue.esm.browser.js";
+import Vuex from "../vuex.esm.browser.js";
 import auth from "./modules/auth.js";
 
 Vue.use(Vuex);

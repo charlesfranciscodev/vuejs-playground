@@ -17,6 +17,7 @@ const ContactFormMixin = {
         "password": "",
         "email": "",
         "birthdate": "",
+        "short_birthdate": "",
         "phone_number": "",
         "avatar_url": "",
         "description": "",

@@ -1,10 +1,11 @@
 import dateutil.parser
+from flask import Blueprint, jsonify, render_template, request, Response
 
-from flask import Blueprint, jsonify, request, render_template, Response
-
+from project.api.auth_routes import login_required
+from project.api.error_routes import custom_error_handler
 from project.api.models import Contact, Project
-from project.api.contact_routes import login_required, custom_error_handler
 from project import db
+
 
 projects_blueprint = Blueprint(
     "projects",

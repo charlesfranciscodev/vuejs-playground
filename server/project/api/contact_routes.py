@@ -1,21 +1,17 @@
-import sys
-import datetime
-import traceback
-
-import bcrypt
-import dateutil.parser
-
-import pandas as pd
-
 from functools import wraps
 
+import dateutil.parser
+import pandas
 from flask import (
     Blueprint, jsonify, request, render_template, Response, send_file,
     session, redirect, url_for
 )
 
-from project.api.models import Contact, Project
 from project import db
+from project.api.auth_routes import login_required
+from project.api.error_routes import custom_error_handler
+from project.api.models import Contact, Project
+
 
 contacts_blueprint = Blueprint(
     "contacts",
@@ -26,107 +22,11 @@ contacts_blueprint = Blueprint(
 )
 
 
-## Decorators
-def login_required(admin_required=False):
-    def decorator(f):
-        @wraps(f)
-        def decorated_function(*args, **kwargs):
-            response = {
-                "message": "Please provide a valid auth token."
-            }
-            auth_header = request.headers.get("Authorization")
-            if not auth_header:
-                return jsonify(response), 401
-            auth_token = auth_header.split(" ")[1]
-            value = Contact.decode_auth_token(auth_token)
-            if isinstance(value, str):
-                response["message"] = value
-                return jsonify(response), 401
-            contact = Contact.query.filter_by(contact_id=value).first()
-            if contact is None or (not contact.is_admin and admin_required):
-                response["message"] = "Admin permissions required"
-                return jsonify(response), 401
-            return f(value, *args, **kwargs)
-        return decorated_function
-    return decorator
-
-
-def custom_error_handler(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        try:
-            return f(*args, **kwargs)
-        except Exception as e:
-            date_time = "{}\n".format(
-                datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            )
-            exception_type, exception, stack_trace = sys.exc_info()
-            lines = [date_time] + traceback.format_tb(stack_trace)
-            session["error_message"] = "{}: {}".format(exception_type, exception)
-            session["stack_trace"] = lines
-            return redirect(url_for("contacts.error"))
-    return decorated_function
-
-
-# Templates
 @contacts_blueprint.route("/")
 @custom_error_handler
 def index():
-    """Home Page"""
+    """Render the Home Page template."""
     return render_template("index.html")
-
-
-@contacts_blueprint.route("/example")
-@custom_error_handler
-def example():
-    """Example route to link to from the Vue.js app."""
-    return render_template("example.html")
-
-
-@contacts_blueprint.route("/error-example")
-@custom_error_handler
-def error_example():
-    """Error example route which fails intentionally."""
-    return render_template("fail.html")
-
-
-@contacts_blueprint.route("/error")
-def error():
-    return render_template(
-        "error.html",
-        error_message=session["error_message"],
-        stack_trace=session["stack_trace"]
-    )
-
-
-def page_not_found(e):
-    return render_template("404.html"), 404
-
-
-# REST API
-@contacts_blueprint.route("/login", methods=["POST"])
-@custom_error_handler
-def login():
-    response = {}
-    request_json = request.get_json()
-    username = request_json["username"]
-    password = request_json["password"].encode("utf-8")
-
-    # verify credentials
-    contact = Contact.query.filter_by(username=username).first()
-    if contact is None:
-        response["message"] = "Invalid username or password."
-        return jsonify(response), 401
-    hashed_password = bcrypt.hashpw(password, contact.salt.encode("utf-8")).decode()
-    if hashed_password != contact.hashed_password:
-        response["message"] = "Invalid username or password."
-        return jsonify(response), 401
-
-    # Generate auth token
-    auth_token = contact.encode_auth_token()
-    response = contact.to_partial_dict()
-    response["token"] = auth_token.decode()
-    return jsonify(response)
 
 
 @contacts_blueprint.route("/download/contacts-pandas")
@@ -136,11 +36,11 @@ def download_contacts():
     contacts = db.session.query(Contact).all()
     for contact in contacts:
         data.append(contact.to_spreadsheet_dict())
-    df = pd.DataFrame(data)
+    dataframe = pandas.DataFrame(data)
     file_name = "contacts-pandas.xlsx"
     absolute_path = "/usr/src/app/project/api/static/spreadsheet/{}".format(file_name)
-    writer = pd.ExcelWriter(absolute_path, engine="xlsxwriter")
-    df.to_excel(writer, index=False)
+    writer = pandas.ExcelWriter(absolute_path, engine="xlsxwriter")
+    dataframe.to_excel(writer, index=False)
     writer.save()
     return send_file(absolute_path, mimetype="application/vnd.ms-excel", as_attachment=True)
 
@@ -246,12 +146,3 @@ def create_or_update_contact(user_id):
     response["contact_id"] = contact.contact_id
     
     return jsonify(response), 201
-
-
-@contacts_blueprint.route("/api/test")
-@custom_error_handler
-def test():
-    response = {
-        "message": "Yo mamma so fat even penguins are jealous of the way she waddles."
-    }
-    return jsonify(response)

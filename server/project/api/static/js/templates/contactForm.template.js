@@ -43,9 +43,9 @@ const ContactFormTemplate = `
   </div>
 
   <div class="form-group row">
-    <label for="birthdate" class="col-sm-2 col-form-label">{{ labels["short_birthdate"] }}</label>
+    <label for="short_birthdate" class="col-sm-2 col-form-label">{{ labels["short_birthdate"] }}</label>
     <div class="col-sm-10">
-      <input v-model="contact.short_birthdate" type="datetime-local" class="form-control" id="birthdate">
+      <input v-model="contact.short_birthdate" type="datetime-local" class="form-control" id="short_birthdate">
     </div>
   </div>
 

@@ -1,6 +1,6 @@
 const NavbarTemplate = `
 <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
-  <a class="navbar-brand mr-0" href="/#/">Contact List</a>
+  <a class="navbar-brand mr-0" href="/#/">Playground</a>
 
   <button v-on:click="toggleMenu" class="navbar-toggler ml-1" type="button" data-toggle="collapse" data-target="#navbarLinks" aria-controls="navbarLinks">
     <span class="navbar-toggler-icon"></span>

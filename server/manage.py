@@ -1,6 +1,6 @@
 import json
-import dateutil.parser
 
+import dateutil.parser
 from flask.cli import FlaskGroup
 
 from project import create_app, db

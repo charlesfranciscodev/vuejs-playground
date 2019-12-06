@@ -1,8 +1,9 @@
-import datetime
 import bcrypt
+import datetime
 import jwt
 
 from flask import current_app
+
 from project import db
 
 
