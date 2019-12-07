@@ -2,9 +2,8 @@
 
 Web App with Vue.js, Bootstrap, Flask and SQLAlchemy
 
-## Main Features
+## Main Feature(s)
 * Contact List
-* Job Queue
 
 The goal of this project is to build a web app with Vue.js, without using a package manager (like npm), a transpiler (like Babel) or module bundler (like webpack).
 
