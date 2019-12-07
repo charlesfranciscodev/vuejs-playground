@@ -18,7 +18,7 @@ def login_required(admin_required=False):
         @wraps(f)
         def decorated_function(*args, **kwargs):
             response = {
-                "message": "Please provide a valid auth token."
+                "message": "Please provide an authentication token."
             }
             auth_header = request.headers.get("Authorization")
             if not auth_header:
