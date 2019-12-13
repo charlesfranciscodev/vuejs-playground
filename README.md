@@ -7,6 +7,9 @@ Web App with Vue.js, Bootstrap, Flask and SQLAlchemy
 
 The goal of this project is to build a web app with Vue.js, without using a package manager (like npm), a transpiler (like Babel) or module bundler (like webpack).
 
+## Screenshot
+![Contacts](contacts.png)
+
 ## Why Vue.js?
 * stateful components: automatic UI updates when state changes, without any DOM manipulation (unlike jQuery.js or Jinja templates). Because of this, it is less error prone and verbose.
 * low dependency on npm/Babel/webpack (unlike React.js)
