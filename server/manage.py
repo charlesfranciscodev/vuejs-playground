@@ -1,4 +1,5 @@
 import json
+import datetime
 
 import dateutil.parser
 from flask.cli import FlaskGroup
@@ -35,7 +36,7 @@ def create_projects():
         for project_dict in projects:
             project = Project()
             project.name = project_dict["name"]
-            project.release_date = project_dict["releaseDate"]
+            project.release_date = datetime.datetime.strptime(project_dict["releaseDate"], "%Y-%m-%d").date()
             project.website_url = project_dict["websiteUrl"]
             project.logo_url = project_dict["logoUrl"]
             project.description = project_dict["description"]
