@@ -186,6 +186,10 @@ docker build -f Dockerfile-prod -t registry.heroku.com/<app-name>/web .
 
 where `<app-name>` is the name of the Heroku app
 
+### Set the DATABASE_URL environment variable
+
+`export DATABASE_URL=$(heroku config:get DATABASE_URL)`
+
 ### Test Locally
 
 `docker run --name test -e "PORT=8765" -p 5002:8765 registry.heroku.com/<app-name>/web:latest`
@@ -202,7 +206,7 @@ Once done delete the container:
 
 ### Release the image
 
-`heroku container:release web -a <app-name>`
+`heroku container:release web`
 
 You should now see the app at
 
@@ -213,8 +217,8 @@ where app-name is the name of the Heroku app
 ### Database Setup
 
 ```shell
-heroku run -a <app-name> python manage.py recreate_db
-heroku run -a <app-name> python manage.py seed_db
+heroku run python manage.py recreate_db
+heroku run python manage.py seed_db
 ```
 
 Now go to https://app-name.herokuapp.com/api/contacts
