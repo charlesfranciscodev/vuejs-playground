@@ -33,7 +33,7 @@ const NavbarTemplate = `
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="https://github.com/charlesfranciscodev" target="_blank">
+        <a class="nav-link" href="https://github.com/charlesfranciscodev/vuejs-playground" target="_blank">
           <i class="fab fa-github"></i> GitHub
         </a>
       </li>

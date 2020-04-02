@@ -2,6 +2,8 @@
 
 Web App with Vue.js, Bootstrap, Flask and SQLAlchemy
 
+![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2Fcharlesfranciscodev%2Fvuejs-playground)
+
 ## Main Feature(s)
 * Contact List
 
