@@ -6,7 +6,7 @@ const NavbarTemplate = `
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div v-bind:class="classProperty" class="navbar-collapse" id="navbarLinks" justify-content-between align-items-center w-100>
+  <div v-bind:class="classProperty" class="navbar-collapse justify-content-between align-items-center w-100" id="navbarLinks">
     <ul class="navbar-nav mx-auto text-center">
       <li class="nav-item">
         <a class="nav-link" href="/#/">
