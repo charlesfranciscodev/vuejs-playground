@@ -1,11 +1,6 @@
-from functools import wraps
-
 import dateutil.parser
 import pandas
-from flask import (
-    Blueprint, jsonify, request, render_template, Response, send_file,
-    session, redirect, url_for
-)
+from flask import Blueprint, jsonify, request, render_template, Response, send_file
 
 from project import db
 from project.api.auth_routes import login_required
@@ -85,7 +80,10 @@ def create_or_update_contact(user_id):
     contact = None
 
     # Validation
-    keys = ["first_name", "last_name", "username", "email", "short_birthdate", "phone_number", "avatar_url", "description"]
+    keys = [
+        "first_name", "last_name", "username", "email", "short_birthdate", "phone_number",
+        "avatar_url", "description",
+    ]
     if request.method == "POST":
         keys.append("password")
     elif request.method == "PUT":
@@ -144,5 +142,5 @@ def create_or_update_contact(user_id):
         response["message"] = "Contact updated successfully"
     db.session.commit()
     response["contact_id"] = contact.contact_id
-    
+
     return jsonify(response), 201

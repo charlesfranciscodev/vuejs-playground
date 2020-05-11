@@ -31,7 +31,7 @@ const ContactDetail = {
       
       // with Moment.js
       let now = moment();
-      let birthdate = moment(this.contact["birthdate"]);
+      let birthdate = moment(this.contact.birthdate);
       return now.diff(birthdate, "year");
     }
   },

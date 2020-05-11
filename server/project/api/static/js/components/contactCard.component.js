@@ -11,7 +11,7 @@ const ContactCard = {
   
   computed: {
     detailViewPath() {
-      return `/#/view/${this.contact["contact_id"]}`;
+      return `/#/view/${this.contact.contact_id}`;
     }
   }
 };

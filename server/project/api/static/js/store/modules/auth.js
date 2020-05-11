@@ -19,10 +19,10 @@ const actions = {
     return new Promise((resolve, reject) => {
       // validation
       commit("clearErrors");
-      if (formData["username"] === "") {
+      if (formData.username === "") {
         commit("addError", "Username required.");
         reject();
-      } else if (formData["password"] === "") {
+      } else if (formData.password === "") {
         commit("addError", "Password required.");
         reject();
       } else {

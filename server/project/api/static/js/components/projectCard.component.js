@@ -7,7 +7,7 @@ const ProjectCard = {
   
   computed: {
     detailViewPath() {
-      return `/#/project/${this.project["project_id"]}`;
+      return `/#/project/${this.project.project_id}`;
     }
   }
 };

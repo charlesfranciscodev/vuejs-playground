@@ -20,7 +20,7 @@ def custom_error_handler(f):
     def decorated_function(*args, **kwargs):
         try:
             return f(*args, **kwargs)
-        except Exception as e:
+        except Exception:
             date_time = "{}\n".format(
                 datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             )
